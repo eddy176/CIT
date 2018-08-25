@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1522189712 source:d:\code4git\c3005\juliaset\juliaset.cpp
+	"JuliaSet.h"
+
+1521568821 d:\code4git\c3005\juliaset\juliaset.h
+	<vector>
+	<iostream>
+	<string>
+	<cstdlib>
+	<fstream>
+	<cmath>
+
+1522189569 source:d:\code4git\c3005\juliaset\main.cpp
+	"JuliaSet.h"
+	"PPM.h"
+	<fstream>
+
+1519840606 d:\code4git\c3005\juliaset\ppm.h
+	<vector>
+	<iostream>
+	<string>
+	<cstdlib>
+	<fstream>
+	<cmath>
+
+1519841833 source:d:\code4git\c3005\juliaset\ppm.cpp
+	"PPM.h"
+

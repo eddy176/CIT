@@ -1,0 +1,3 @@
+D:/code4git/c3005/travelingsalesman/cmake-build-debug/CMakeFiles/travelingsalesman.dir
+D:/code4git/c3005/travelingsalesman/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/code4git/c3005/travelingsalesman/cmake-build-debug/CMakeFiles/rebuild_cache.dir

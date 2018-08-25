@@ -1,0 +1,38 @@
+# depslib dependency file v1.0
+1519837395 source:/media/harbad/Data/code4git/c3005/ppm3/PPM.cpp
+	"PPM.h"
+	"PPM.h"
+
+1519837006 /media/harbad/Data/code4git/c3005/ppm3/PPM.h
+	<vector>
+	<iostream>
+	<string>
+	<cstdlib>
+	<vector>
+	<iostream>
+	<string>
+	<cstdlib>
+	<fstream>
+	<cmath>
+
+1519608031 
+
+1519837539 source:/media/harbad/Data/code4git/c3005/ppm3/main.cpp
+	"PPM.h"
+	<fstream>
+	"PPM.h"
+
+1519841139 source:d:\code4git\c3005\ppm3\main.cpp
+	"PPM.h"
+
+1519840606 d:\code4git\c3005\ppm3\ppm.h
+	<vector>
+	<iostream>
+	<string>
+	<cstdlib>
+	<fstream>
+	<cmath>
+
+1519841833 source:d:\code4git\c3005\ppm3\ppm.cpp
+	"PPM.h"
+

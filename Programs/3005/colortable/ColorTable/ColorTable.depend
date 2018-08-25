@@ -1,0 +1,35 @@
+# depslib dependency file v1.0
+1522868015 source:d:\code4git\c3005\colortable\colortable\main.cpp
+	"ColorTable.h"
+	"JuliaSet.h"
+	"PPM.h"
+	<fstream>
+
+1522868172 d:\code4git\c3005\colortable\colortable\colortable.h
+	<vector>
+	<iostream>
+	<string>
+	<cstdlib>
+	<fstream>
+	<ctime>
+
+1522191143 d:\code4git\c3005\colortable\colortable\juliaset.h
+	<vector>
+	<iostream>
+	<string>
+	<cstdlib>
+	<fstream>
+	<cmath>
+	<ios>
+
+1519840606 d:\code4git\c3005\colortable\colortable\ppm.h
+	<vector>
+	<iostream>
+	<string>
+	<cstdlib>
+	<fstream>
+	<cmath>
+
+1522868188 source:d:\code4git\c3005\colortable\colortable\colortable.cpp
+	"ColorTable.h"
+

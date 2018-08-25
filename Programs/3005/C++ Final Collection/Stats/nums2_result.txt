@@ -1,0 +1,7 @@
+Sum: 2649.89
+Count: 1550
+Average: 1.70961
+Median: 1.768
+Minimum: -0.6
+Maximum: 3.964
+Product: -5.99296e+94

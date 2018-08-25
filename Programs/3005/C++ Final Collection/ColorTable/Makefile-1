@@ -1,0 +1,20 @@
+CXXFLAGS := -std=c++11
+main: main.o JuliaSet.o PPM.o ColorTable.o
+	g++ $(CXXFLAGS) -o main main.o JuliaSet.o PPM.o ColorTable.o
+
+main.o: main.cpp JuliaSet.h PPM.h ColorTable.h
+	g++ $(CXXFLAGS) -c main.cpp
+
+ColorTable.o: ColorTable.cpp ColorTable.h
+	g++ $(CXXFLAGS) -c ColorTable.cpp
+
+JuliaSet.o: JuliaSet.cpp JuliaSet.h
+	g++ $(CXXFLAGS) -c JuliaSet.cpp
+
+PPM.o: PPM.cpp PPM.h
+	g++ $(CXXFLAGS) -c PPM.cpp
+
+clean:
+	-rm -f +_
+	-rm -f $(TARGETS)
+	-rm -f *.o

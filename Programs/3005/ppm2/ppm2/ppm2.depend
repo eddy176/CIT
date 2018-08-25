@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1519317912 source:/media/harbad/Data/code4git/c3005/ppm2/ppm2/PPM.cpp
+	"PPM.h"
+
+1519317927 /media/harbad/Data/code4git/c3005/ppm2/ppm2/PPM.h
+	<vector>
+	<iostream>
+	<string>
+	<cstdlib>
+

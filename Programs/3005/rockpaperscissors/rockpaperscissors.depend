@@ -1,0 +1,19 @@
+# depslib dependency file v1.0
+1517738626 source:/home/harbad/workspace/rockpaperscissors/rps.cpp
+	"rps.h"
+	<cstdlib>
+	<ctime>
+	<iostream>
+	<string>
+
+1517738627 /home/harbad/workspace/rockpaperscissors/rps.h
+	<iostream>
+	<cstdlib>
+	<ctime>
+
+1517808055 source:/home/harbad/workspace/rockpaperscissors/main.cpp
+	"rps.h"
+	<iostream>
+	<string>
+	<cstdlib>
+

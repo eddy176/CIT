@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1519791263 source:/media/harbad/Data/code4git/c3005/Stats/main.cpp
+	"stats.h"
+
+1519832612 /media/harbad/Data/code4git/c3005/Stats/stats.h
+	<string>
+	<iostream>
+	<cstdlib>
+	<vector>
+	<algorithm>
+	<cmath>
+	<fstream>
+	<stdio.h>
+
+1519831902 source:/media/harbad/Data/code4git/c3005/Stats/stats.cpp
+	"stats.h"
+
