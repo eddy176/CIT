@@ -1,0 +1,62 @@
+#!/bin/bash
+
+#
+# find 00bin-o
+#
+BIN=../../../cs4300-code-ai/bin/00bin-o
+
+#
+# 
+#
+if [ ! -x $BIN/JetanServer ]; then
+    echo "JetanServer is missing"
+    exit 1
+fi
+if [ ! -x $BIN/JetanDisplay ]; then
+    echo "JetanDisplay is missing"
+    exit 1
+fi
+if [ ! -x $BIN/JetanAgent ]; then
+    echo "JetanAgent is missing"
+    exit 1
+fi
+
+if [ -r jetan_agent_arguments.txt ]; then
+    ARGS=$(cat jetan_agent_arguments.txt)
+else
+    echo "jetan_agent_arguments.txt is missing" 
+    exit 1
+fi
+USE_DISPLAY=0
+if [ "$1" == "no_display" ]; then
+    USE_DISPLAY=1
+fi
+
+# To run without a display, run with no_display as the first argument
+
+# Launch the game server
+$BIN/JetanServer \
+    --sleep 0 \
+    --delay 0 \
+    --steps 100 \
+    --agents 2 \
+    --displays ${USE_DISPLAY} \
+    --tourney 1 \
+    --runs 25 \
+    --trace 0 \
+    >server.log 2>server.err &
+echo "Waiting for server to get started"
+sleep 1
+
+if [ "$USE_DISPLAY" -gt 0 ]; then
+    # Launch the display
+    $BIN/JetanDisplay >display.log 2>display.err &
+fi
+
+# Launch AlphaBeta as first player
+$BIN/JetanAgent --agent r --trace 0 >agent1.log 2>agent1.err &
+# $BIN/JetanAgent --agent M --trace 0 >agent1.log 2>agent1.err &
+
+# Launch second player using arguments in jetan_agent_arguments.txt
+$BIN/JetanAgent $ARGS
+# $BIN/JetanAgent $ARGS >agent2.log 2>agent2.err &

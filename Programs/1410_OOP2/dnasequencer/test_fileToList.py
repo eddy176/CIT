@@ -239,7 +239,5 @@ class TestFileToList(unittest.TestCase):
             # "ERROR" for the test instead of "FAIL"
             self.fail('What should happen if a file does not exist?')
 
-#if __name__ == '__main__':
- #   unittest.main()
-
-unittest.main()
+if __name__ == '__main__':
+    unittest.main()

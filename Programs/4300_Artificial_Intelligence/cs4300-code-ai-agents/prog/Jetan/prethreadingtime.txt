@@ -1,0 +1,2 @@
+Agt:  1 Win: 0       Random Score:  -1 Time:  0.0 Moves:   8
+Agt:  2 Win: 1 AlphaBeta-d5-e1 Score:   1 Time: 244.1 Moves:   8

@@ -1,0 +1,24 @@
+#
+# get rid of unexpected files
+#
+*
+
+#
+# Don't store binary files
+#
+*.a
+
+# except, keep .gitignore
+!.gitignore
+
+# keep expected files
+!00lib-g
+!00lib-gp
+!00lib-o
+#!libaiagent.a
+#!libaicsp.a
+#!libaienvironment.a
+#!libaifol.a
+#!libailocalsearch.a
+#!libaipl.a
+#!libaisearch.a

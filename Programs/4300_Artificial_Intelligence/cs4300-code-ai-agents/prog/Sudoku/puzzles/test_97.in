@@ -1,0 +1,30 @@
+config board_size 9
+# based on 1.5Gbyte of RAM for node storage
+config generation_limit 2100000
+config storage_limit    2100000
+#
+config restart 100
+config restart 10000
+
+config start_temperature 10000.0
+config min_temperature 0.001
+config temperature_reduction 1000.0
+
+# unknown difficulty
+initial
+
+. 4 . . . . . 5 .
+8 . 6 . 2 9 . . 7
+. . . 7 . . . 2 .
+. 6 . . . . 9 . .
+. 5 . . 6 . . 1 .
+. . 4 . . . . 3 .
+. 8 . . . 5 . . .
+3 . . 1 8 . 5 . 2
+. 1 . . . . . 7 .
+
+search tree bfs
+search tree dfs
+local hillclimb
+local firstchoice
+local annealing

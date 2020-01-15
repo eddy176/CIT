@@ -1,0 +1,23 @@
+#
+# get rid of unexpected files
+#
+*
+
+# except, keep .gitignore
+!.gitignore
+
+#
+# keep all header files
+#
+!*.h
+
+# keep expected directories
+!Agent/
+!CSP/
+!FOL/
+!LocalSearch/
+!PL/
+!Search/
+!Support/
+
+

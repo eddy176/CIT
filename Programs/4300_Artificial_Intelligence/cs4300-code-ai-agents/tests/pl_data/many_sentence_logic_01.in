@@ -1,0 +1,38 @@
+#
+# This problem comes from "Logic Puzzles" by Fernandez, Summers, and Willis
+#
+tell TT_A <=> ( (G_A & R_A) | (D_A & P_A) )
+tell (!TT_A) <=> ( (D_A & R_A) | (G_A & P_A) )
+tell G_A <=> (!D_A)
+tell R_A <=> (!P_A)
+tell TT_B <=> ( (G_B & R_B) | (D_B & P_B) )
+tell (!TT_B) <=> ( (D_B & R_B) | (G_B & P_B) )
+tell G_B <=> (!D_B)
+tell R_B <=> (!P_B)
+tell TT_C <=> ( (G_C & R_C) | (D_C & P_C) )
+tell (!TT_C) <=> ( (D_C & R_C) | (G_C & P_C) )
+tell G_C <=> (!D_C)
+tell R_C <=> (!P_C)
+tell TT_A <=> ((!G_B) & (!G_A))
+tell TT_A <=> (TT_C <=> D_C)
+tell TT_A <=> ((TT_A & TT_B & (!TT_C)) | (TT_A & (!TT_B) & TT_C) | ((!TT_A) & TT_B & TT_C) )
+tell TT_B <=> R_B
+tell TT_B <=> (TT_A <=> P_A)
+tell TT_B <=> (!TT_A)
+tell TT_C <=> P_B
+tell TT_C <=> (TT_A <=> R_A)
+dpll G_A
+dpll D_A
+dpll R_A
+dpll P_A
+dpll G_B
+dpll D_B
+dpll R_B
+dpll P_B
+dpll G_C
+dpll D_C
+dpll R_C
+dpll P_C
+dpll TT_A
+dpll TT_B
+dpll TT_C

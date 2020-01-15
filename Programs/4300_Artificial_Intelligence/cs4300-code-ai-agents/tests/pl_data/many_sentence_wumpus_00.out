@@ -1,0 +1,23 @@
+YES, SAFE_1_1 is entailed.
+YES, SAFE_1_2 is entailed.
+YES, SAFE_2_1 is entailed.
+YES, SAFE_2_2 is entailed.
+NO, SAFE_3_1 is not entailed.
+NO, SAFE_1_3 is not entailed.
+NO, SAFE_1_4 is not entailed.
+YES, W_1_3 is entailed.
+NO, W_3_1 is not entailed.
+NO, P_1_3 is not entailed.
+YES, P_3_1 is entailed.
+NO, !SAFE_1_1 is not entailed.
+NO, !SAFE_1_2 is not entailed.
+NO, !SAFE_2_1 is not entailed.
+NO, !SAFE_2_2 is not entailed.
+YES, !SAFE_3_1 is entailed.
+# This is NO, because it can become safe if the wumpus is dead
+NO, !SAFE_1_3 is not entailed.
+NO, !SAFE_1_4 is not entailed.
+NO, !W_1_3 is not entailed.
+YES, !W_3_1 is entailed.
+YES, !P_1_3 is entailed.
+NO, !P_3_1 is not entailed.

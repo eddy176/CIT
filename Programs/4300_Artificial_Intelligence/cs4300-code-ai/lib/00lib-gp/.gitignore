@@ -1,0 +1,16 @@
+#
+# get rid of unexpected files
+#
+*
+
+# except, keep .gitignore
+!.gitignore
+
+# keep expected files
+# !libaiagent.a
+# !libaicsp.a
+# !libaienvironment.a
+# !libaifol.a
+# !libailocalsearch.a
+# !libaipl.a
+# !libaisearch.a

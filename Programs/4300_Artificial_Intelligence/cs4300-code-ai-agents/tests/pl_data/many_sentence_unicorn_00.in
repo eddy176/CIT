@@ -1,0 +1,73 @@
+# This problem is taken from Artificial Intelligence, A Modern Approach, 3rd Edition, Chapter Problem 7.2: By Russell and Norvig
+# If the unicorn is mythical, then it is immortal,
+# but if it is not mythical, then it is a mortal mammal.
+# If the unicorn is either immortal or a mammal, then it is horned.
+# The unicorn is magical if it is horned.
+# 
+# Is the unicorn mythical?
+# Is the unicorn magical?
+# Is the unicorn horned?
+# Is the unicorn immortal?
+# Is the unicorn mammal?
+#
+# Truth table
+#
+# | MYTHICAL | MAGICAL | HORNED | IMMORTAL | MAMMAL | MYTHICAL => IMMORTAL | (!MYTHICAL) => ((!IMMORTAL) & MAMMAL) | (IMMORTAL | MAMMAL) => HORNED | HORNED => MAGICAL | KB |
+# +----------+---------+--------+----------+--------+----------------------+---------------------------------------+-------------------------------+-------------------+----+
+# |    T     |   T     |   T    |    T     |   T    |          T           |                    T                  |      T                        |         T         |  T |
+# |    T     |   T     |   T    |    T     |   F    |          T           |                    T                  |      T                        |         T         |  T |
+# |    T     |   T     |   T    |    F     |   T    |        F             |                    T                  |      T                        |         T         | F  |
+# |    T     |   T     |   T    |    F     |   F    |        F             |                    T                  |      T                        |         T         | F  |
+# |    T     |   T     |   F    |    T     |   T    |          T           |                    T                  |    F                          |         T         | F  |
+# |    T     |   T     |   F    |    T     |   F    |          T           |                    T                  |    F                          |         T         | F  |
+# |    T     |   T     |   F    |    F     |   T    |        F             |                    T                  |    F                          |         T         | F  |
+# |    T     |   T     |   F    |    F     |   F    |        F             |                    T                  |      T                        |         T         | F  |
+# |    T     |   F     |   T    |    T     |   T    |          T           |                    T                  |      T                        |       F           | F  |
+# |    T     |   F     |   T    |    T     |   F    |          T           |                    T                  |      T                        |       F           | F  |
+# |    T     |   F     |   T    |    F     |   T    |        F             |                    T                  |      T                        |       F           | F  |
+# |    T     |   F     |   T    |    F     |   F    |        F             |                    T                  |      T                        |       F           | F  |
+# |    T     |   F     |   F    |    T     |   T    |          T           |                    T                  |    F                          |         T         | F  |
+# |    T     |   F     |   F    |    T     |   F    |          T           |                    T                  |    F                          |         T         | F  |
+# |    T     |   F     |   F    |    F     |   T    |        F             |                    T                  |    F                          |         T         | F  |
+# |    T     |   F     |   F    |    F     |   F    |        F             |                    T                  |      T                        |         T         | F  |
+# |    F     |   T     |   T    |    T     |   T    |          T           |                  F                    |      T                        |         T         | F  |
+# |    F     |   T     |   T    |    T     |   F    |          T           |                  F                    |      T                        |         T         | F  |
+# |    F     |   T     |   T    |    F     |   T    |          T           |                    T                  |      T                        |         T         |  T |
+# |    F     |   T     |   T    |    F     |   F    |          T           |                  F                    |      T                        |         T         | F  |
+# |    F     |   T     |   F    |    T     |   T    |          T           |                  F                    |    F                          |         T         | F  |
+# |    F     |   T     |   F    |    T     |   F    |          T           |                  F                    |    F                          |         T         | F  |
+# |    F     |   T     |   F    |    F     |   T    |          T           |                    T                  |    F                          |         T         | F  |
+# |    F     |   T     |   F    |    F     |   F    |          T           |                  F                    |      T                        |         T         | F  |
+# |    F     |   F     |   T    |    T     |   T    |          T           |                  F                    |      T                        |       F           | F  |
+# |    F     |   F     |   T    |    T     |   F    |          T           |                  F                    |      T                        |       F           | F  |
+# |    F     |   F     |   T    |    F     |   T    |          T           |                    T                  |      T                        |       F           | F  |
+# |    F     |   F     |   T    |    F     |   F    |          T           |                  F                    |      T                        |       F           | F  |
+# |    F     |   F     |   F    |    T     |   T    |          T           |                  F                    |    F                          |         T         | F  |
+# |    F     |   F     |   F    |    T     |   F    |          T           |                  F                    |    F                          |         T         | F  |
+# |    F     |   F     |   F    |    F     |   T    |          T           |                    T                  |    F                          |         T         | F  |
+# |    F     |   F     |   F    |    F     |   F    |          T           |                  F                    |      T                        |         T         | F  |
+# +----------+---------+--------+----------+--------+----------------------+---------------------------------------+-------------------------------+-------------------+----+
+# True models repeated here:
+# +----------+---------+--------+----------+--------+----------------------+---------------------------------------+-------------------------------+-------------------+----+
+# |    T     |   T     |   T    |    T     |   T    |          T           |                    T                  |      T                        |         T         |  T |
+# |    T     |   T     |   T    |    T     |   F    |          T           |                    T                  |      T                        |         T         |  T |
+# |    F     |   T     |   T    |    F     |   T    |          T           |                    T                  |      T                        |         T         |  T |
+# +----------+---------+--------+----------+--------+----------------------+---------------------------------------+-------------------------------+-------------------+----+
+# The unicorn is Magical and Horned
+#
+#
+tell MYTHICAL => IMMORTAL
+tell (!MYTHICAL) => ((!IMMORTAL) & MAMMAL)
+tell (IMMORTAL | MAMMAL) => HORNED
+tell HORNED => MAGICAL
+# questions
+dpll MYTHICAL
+dpll MAGICAL
+dpll HORNED
+dpll IMMORTAL
+dpll MAMMAL
+dpll !MYTHICAL
+dpll !MAGICAL
+dpll !HORNED
+dpll !IMMORTAL
+dpll !MAMMAL

@@ -1,0 +1,15 @@
+#
+# get rid of unexpected files
+#
+*
+
+# except, keep .gitignore
+!.gitignore
+
+# keep known files and directories
+!00bin-g/
+!00bin-gp/
+!00bin-o/
+!ScavengerData/
+!ScavengerWorlds/
+

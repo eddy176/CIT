@@ -34,10 +34,14 @@ def findLargestOverlap(target, candidate):
         return -1
     for i in range(len(target)):
         tarslice = target[i:]
-        canslice = candidate[0:len(tarslice)]
-        if tarslice == canslice:                
+        canslice = candidate[:len(tarslice)]
+        if candidateOverlapsTarget(target, candidate, len(tarslice)):                
             return len(tarslice)
     return 0
+
+def candidateOverlapsTarget(target, candidate, overlap):
+    return target[-overlap:] == candidate[:overlap]
+
 
 def findBestCandidate(target, candidates):
     bestcan = ""
@@ -65,7 +69,6 @@ def main():
     overlap = candidate[1]
     woot = joinTwoStrands(target, best, overlap)
     print (woot)
-    return woot
 
 if __name__ == '__main__':
     main()

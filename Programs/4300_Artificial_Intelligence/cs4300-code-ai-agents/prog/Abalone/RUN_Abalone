@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#
+# Run this in ai/bin/00bin-o
+#
+if [ ! -x AbaloneServer ]; then
+    echo "AbaloneServer is missing"
+    exit 1
+fi
+if [ ! -x AbaloneDisplay ]; then
+    echo "AbaloneDisplay is missing"
+    exit 1
+fi
+if [ ! -x AbaloneAgent ]; then
+    echo "AbaloneAgent is missing"
+    exit 1
+fi
+
+# Launch the game server
+./AbaloneServer -d 0 -s 20 -a 2 -T 1 -t 1 >server.log 2>server.err &
+echo "Waiting for server to get started"
+sleep 2
+
+# Launch the display
+./AbaloneDisplay >display.log 2>display.err &
+
+# Launch RandomPick as first player
+./AbaloneAgent -a r -t 0 >agent1.log 2>agent1.err &
+
+# Launch RandomPick as second player
+./AbaloneAgent -a r -t 0 >agent2.log 2>agent2.err &
+

@@ -1,0 +1,59 @@
+MAKE_DIR := $(shell mkpath="."; count=0; while [ \( ! -e "$$mkpath/Makefile.top" \) -a \( "$$count" -lt 10 \) ]; do mkpath="$$mkpath/.."; count=`echo $$count | awk '{print $$1 + 1;}'`; done; echo $$mkpath;)
+
+include $(MAKE_DIR)/Makefile.top
+
+LOCAL_SUBDIR  := ScavengerWorlds
+LOCAL_PART    := ScavengerWorld/WorldGeneration/$(LOCAL_SUBDIR)
+LOCAL_SRC_DIR := $(PROG_DIR)/$(LOCAL_PART)
+LOCAL_INC_DIR := $(PROG_DIR)/$(LOCAL_PART)
+
+LOCAL_FILES   := $(shell cd $(PROG_DIR)/$(LOCAL_PART); find . -name '*world*.txt' -print)
+
+AI_SRC := 
+AI_HEADERS := 
+LOCAL_SRC := 
+LOCAL_HEADERS := 
+CXX_HEADERS := 
+CXX_SRC  := 
+
+
+TARGET_HEADERS    := ${CXX_HEADERS:%.h=$(AI_INC_DIR)/%.h}
+TARGET_OBJS       := ${CXX_SRC:%.cpp=$(OBJ_BASE)/%.o}
+TARGET_LIB        := 
+TARGET_PROG       := ${LOCAL_FILES:%=$(AI_BIN_DIR)/$(LOCAL_SUBDIR)/%}
+LOCAL_SPOTLESS    := yes
+
+include $(MAKE_DIR)/Makefile.rules
+
+ifeq ($(strip $(DIR_POSTFIX)),)
+$(AI_BIN_DIR)/$(LOCAL_SUBDIR):
+	mkdir $@
+$(AI_BIN_DIR)/$(LOCAL_SUBDIR)/% :: $(LOCAL_SRC_DIR)/% $(AI_BIN_DIR)/$(LOCAL_SUBDIR)
+	cp $< $@
+
+local_spotless:
+	-rm -f $(TARGET_PROG)
+	-d=$(AI_BIN_DIR)/$(LOCAL_SUBDIR); if [ -d $$d ]; then if [ `ls -A $$d | wc -l` = "0" ]; then rmdir $$d; fi; fi
+
+else
+$(AI_PREFIX_DIR)/bin:
+	mkdir $@
+$(AI_PREFIX_DIR)/bin/$(LOCAL_SUBDIR):
+	mkdir $@
+$(AI_BIN_DIR)/$(LOCAL_SUBDIR): $(AI_PREFIX_DIR)/bin $(AI_PREFIX_DIR)/bin/$(LOCAL_SUBDIR)
+	if [ ! -h $@ ]; then ln -s ../$(LOCAL_SUBDIR) $@; fi
+$(AI_BIN_DIR)/$(LOCAL_SUBDIR)/% :: $(LOCAL_SRC_DIR)/% $(AI_BIN_DIR)/$(LOCAL_SUBDIR)
+	d=`dirname $@`; if [ ! -d $$d ]; then mkdir -p $$d; fi;
+	cp $< $@
+
+local_spotless:
+	-rm -f $(TARGET_PROG)
+	-rm -f $(AI_BIN_DIR)/$(LOCAL_SUBDIR)
+	-d=$(AI_PREFIX_DIR)/bin/$(LOCAL_SUBDIR); if [ -d $$d ]; then if [ `ls -A $$d | wc -l` = "0" ]; then rmdir $$d; fi; fi
+
+endif
+
+include $(MAKE_DIR)/Makefile.dep
+# Local Variables:
+# mode:makefile
+# End:

@@ -1,0 +1,15 @@
+NO, G_A is not entailed.
+YES, D_A is entailed.
+YES, R_A is entailed.
+NO, P_A is not entailed.
+YES, G_B is entailed.
+NO, D_B is not entailed.
+YES, R_B is entailed.
+NO, P_B is not entailed.
+NO, G_C is not entailed.
+YES, D_C is entailed.
+YES, R_C is entailed.
+NO, P_C is not entailed.
+NO, TT_A is not entailed.
+YES, TT_B is entailed.
+NO, TT_C is not entailed.

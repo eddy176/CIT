@@ -1,0 +1,89 @@
+*** Settings ***
+| Library         | Process
+| Library         | OperatingSystem
+| Library         | String
+| Suite Teardown  | Terminate All Processes | kill=True
+|                 | Remove File | ${TEST_STDOUT}
+| Test Teardown   | Remove File | ${TEST_STDOUT}
+
+*** Test Cases ***
+# | Echo Test |
+# |  | Run One Logic Test | cat | cat_test.in | cat_test.out |
+
+# | Symbol Test 00 |
+# |  | Run One Logic Test | ${PL_SHELL} | symbol_00.in | symbol_00.out |
+
+# | Symbol Test 01 |
+# |  | Run One Logic Test | ${PL_SHELL} | symbol_01.in | symbol_01.out |
+
+| All Symbol Test |
+|  | Run Many Logic Tests | ${PL_SHELL} | symbol_*.in |
+
+| All Zero Operator Test |
+|  | Run Many Entailment Tests | ${PL_SHELL} | zero_operator_*.in |
+
+| All One Operator Test |
+|  | Run Many Entailment Tests | ${PL_SHELL} | one_operator_*.in |
+
+| All Many Sentence Test |
+|  | Run Many Entailment Tests | ${PL_SHELL} | many_sentence_*.in |
+
+| All Mutated Tests |
+|  | Run Many Entailment Tests | ${PL_SHELL} | mutated_*.in |
+
+
+*** Keywords ***
+# Run a test, comparing output file against expected output
+| Run One Logic Test |
+|                    | [Arguments]    | ${cmd}        | ${input_file} | ${output_file} |
+|                    | Log To Console | ${cmd} < ${input_file} == ${output_file} |
+|                    | ${result} = |  Run Process  | ${cmd} < ${TEST_INPUT_DIR}${/}${input_file} \| egrep -v '^(tell)' | shell=true | stdout=${TEST_STDOUT} |
+|                    | Files Should Be Equal | ${TEST_INPUT_DIR}${/}${output_file} | ${TEST_STDOUT} |
+# Compare two text files
+| Files Should Be Equal |
+|                       | [Arguments]   | ${file1} | ${file2}
+|                       | ${content1} = | Get File | ${file1}
+|                       | ${content2} = | Get File | ${file2}
+|                       | Should Be Equal As Strings | ${content1} | ${content2}
+# Run all tests that match the given pattern
+| Run Many Logic Tests |
+|                      | [Arguments] | ${cmd}        | ${pattern} |
+|                      | @{files} =  | List Files In Directory | ${TEST_INPUT_DIR} | pattern=${pattern} |
+|                      | Log To Console | Processing @{files} |
+|                      | :FOR        | ${input_file} | IN | @{files} |
+|                      | \           | ${output_file} = | Replace String Using Regexp | ${input_file} | \.in$ | .out |
+|                      | \           | Run One Logic Test | ${cmd} | ${input_file} | ${output_file} |
+# Compare entailment lines from two files
+| Entailment Should Be Equal |
+|                       | [Arguments]   | ${file1} | ${file2} |
+|                       | ${content1} = | Grep File | ${file1} | entailed. |
+|                       | ${content2} = | Grep File | ${file2} | entailed. |
+|                       | Should Be Equal As Strings | ${content1} | ${content2}
+# Run a test, comparing the entailment line
+| Run One Entailment Test |
+|                    | [Arguments]    | ${cmd}        | ${input_file} | ${output_file} |
+|                    | Log To Console | ${cmd} < ${input_file} == ${output_file} |
+|                    | ${result} = |  Run Process  | ${cmd} < ${TEST_INPUT_DIR}${/}${input_file} \| egrep -v '^(tell)' | shell=true | stdout=${TEST_STDOUT} |
+|                    | Entailment Should Be Equal | ${TEST_INPUT_DIR}${/}${output_file} | ${TEST_STDOUT} |
+# Run all tests that match the given pattern
+| Run Many Entailment Tests |
+|                      | [Arguments] | ${cmd}        | ${pattern} |
+|                      | @{files} =  | List Files In Directory | ${TEST_INPUT_DIR} | pattern=${pattern} |
+|                      | Log To Console | Processing @{files} |
+|                      | :FOR        | ${input_file} | IN | @{files} |
+|                      | \           | ${output_file} = | Replace String Using Regexp | ${input_file} | \.in$ | .out |
+|                      | \           | Run One Entailment Test | ${cmd} | ${input_file} | ${output_file} |
+
+
+
+
+
+*** Variables ***
+| ${TEST_INPUT_DIR}   | pl_data |
+| ${TEST_OUTPUT_DIR}  | .       |
+| ${TEST_STDOUT}      | ${TEST_OUTPUT_DIR}${/}pl.out |
+| ${PL_SHELL}         | /home/cgl/courses/cs4300/cs4300-code-ai/bin/00bin-o/PL_Shell |
+
+
+
+

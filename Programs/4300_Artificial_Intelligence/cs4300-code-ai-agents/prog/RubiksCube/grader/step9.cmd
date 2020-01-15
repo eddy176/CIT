@@ -1,0 +1,4 @@
+init goal solved_minus_3_1 solved_minus_3_2 solved_minus_3_3 solved_minus_3_4 solved_minus_3_5 solved_minus_3_6 solved_minus_3_7 solved_minus_3_8 solved_minus_3_9 solved_minus_3_10 solved_minus_3_11 solved_minus_3_12 solved_minus_3_13 solved_minus_3_14 solved_minus_3_15
+moves lastcorners_1 y y'
+search graph astar
+run step10.cmd

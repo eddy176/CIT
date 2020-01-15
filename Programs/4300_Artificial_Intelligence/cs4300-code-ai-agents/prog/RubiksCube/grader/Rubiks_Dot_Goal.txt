@@ -1,0 +1,386 @@
+Below is my solve of the cubes for Curtis's Final Exam:
+(NOTE: I run the configstepsearch.cmd file, which runs step00.cmd, which runs step0.cmd, ..., step12.cmd)
+Thank you Curtis for the awesome class!
+//////////////////////////////////////////////////////
+First Cube: 
+F' L' B' U' F' U U' U' L U' U' B' D B L' F D D F' L D
+z z U R U' R' U' F' U F z z D' y'  z z U R U' R' U' F'
+U F z z y y y D'  z z U R U' R' U' F' U F z z y' y' D
+y D  z z U R U' R' U' F' U F z z y' y  z z F U R U' R'
+F' z z y'  z z F R U R' U' F' z z y'  z z F U R U' R'
+F' z z y D'  z z F R U R' U' F' z z z z U R U' L' U R'
+U' L z z y' y'  z z U R U' L' U R' U' L z z y y L' U'
+L U  L' U' L U  L' U' L U  L' U' L U  L' U' L U D  L'
+U' L U D  L' U' L U D'  L' U' L U  L' U' L U  L' U' L
+U  L' U' L U D'  L' U' L U D  L' U' L U  L' U' L U  L'
+U' L U  L' U' L U D  L' U' L U  L' U' L U D D
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Second Cube:   R' F' F' U' F B' B' L D' B B L' D' L D' L
+D' L' R D R' B D' F D F' B' D y  z z U R U' R' U' F' U F
+z z y' y y D  z z U R U' R' U' F' U F z z y' y' y' D'  z
+z U' L' U L U F U' F' z z y y y D  z z U' L' U L U F U' F'
+z z y y z z F R U R' U' F' z z D  z z U R U R' U R U U R'
+z z D   L' U' L U  L' U' L U  L' U' L U  L' U' L U  L' U'
+L U D'  L' U' L U  L' U' L U D'  L' U' L U  L' U' L U  L'
+U' L U D  L' U' L U D  L' U' L U L' U' L U  L' U' L U D'
+L' U' L U  L' U' L U D  L' U' L U  L' U' L U
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Third Cube: 
+L' U' U'
+B' B' L
+B U L U'
+R R B R R
+B D B'
+L D' L'
+B' D' B
+R' D' D' R
+z z U R U' R' U' F' U F z z
+y  z z U R U' R' U' F' U F z z y'
+D y D  z z U' L' U L U F U' F' z z y'
+y y D'  z z U' L' U L U F U' F' z z y' y'
+y y  z z F U R U' R' F' z z y y
+y'  z z U R U R' U R U U R' z z y
+y'  z z U R U' L' U R' U' L z z y 
+L' U' L U  L' U' L U  L' U' L U  L' U' L U  L' U' L U D  L' U' L U  L' U' L U D  L' U' L U D'  L' U' L U  L' U' L U  L' U' L U D'  L' U' L U
+D  L' U' L U  L' U' L U D  L' U' L U  L' U' L U  L' U' L U  L' U' L U D D
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Fourth Cube: 
+U
+F R
+U' R' U
+L B' L'
+D F' D' F
+B' D B F D' F'
+L' D R L D' R'
+L' D L B D B'
+D' y  z z U R U' R' U' F' U F z z y'
+D y  z z U' L' U L U F U' F' z z y'
+y'  z z U R U' R' U' F' U F z z y
+D' D' y'  z z U' L' U L U F U' F' z z y
+y y  z z F U R U' R' F' z z y y
+y y  z z F U R U' R' F' z z y' y'  z z F R U R' U' F' z z  
+L' U' L U  L' U' L U  L' U' L U  L' U' L U  L' U' L U D  L' U' L U  L' U' L U D  L' U' L U D'  L' U' L U  L' U' L U  L' U' L U D'  L' U' L U
+D  L' U' L U  L' U' L U D  L' U' L U  L' U' L U  L' U' L U  L' U' L U D D
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Fifth Cube:  
+U' B' U
+D B B
+U L' U'
+F' D F
+B D B' R D' R'
+D R' B D' B' R
+B R D D R' B'
+D' y  z z U' L' U L U F U' F' z z y'
+y y D  z z U' L' U L U F U' F' z z y y
+z z U R U' R' U' F' U F z z
+y  z z R U' R' U F' U U F U F' U U F z z y'
+y  z z F U R U' R' F' z z y'
+y' y'  z z U R U R' U R U U R' z z y y D
+y y  z z U R U' L' U R' U' L z z y  z z U R U' L' U R' U' L z z y  
+L' U' L U  L' U' L U  L' U' L U  L' U' L U D  L' U' L U  L' U' L U D'
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Sixth Cube:  
+R B' U
+B
+F' D' F L' 
+D F' D F
+L' D' L
+D R' D' R  
+D y D  z z U' L' U L U F U' F' z z y'
+y' D'  z z U R U' R' U' F' U F z z y
+y'  z z F U R U' R' F' z z y
+y'  z z F U R U' R' F' z z y D'  z z F R U R' U' F' z z
+y  z z U R U' L' U R' U' L z z y' 
+L' U' L U  L' U' L U  L' U' L U D  L' U' L U  L' U' L U  L' U' L U  L' U' L U  L' U' L U D  L' U' L U D D  L' U' L U  L' U' L U  L' U' L U
+L' U' L U  L' U' L U D  L' U' L U  L' U' L U  L' U' L U  L' U' L U D'
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Seventh Cube: 
+F'
+B L
+U' B U
+U' L' U B' 
+F' D' F
+L' D' L
+R' F' R R F R
+z z U R U' R' U' F' U F z z
+y y  z z U' L' U L U F U' F' z z y y
+y D  z z U R U' R' U' F' U F z z y'
+y' y'  z z U R U' R' U' F' U F z z y' y'
+y  z z F U R U' R' F' z z y'
+D' D'
+y' y'  z z U R U' L' U R' U' L z z y y 
+D  L' U' L U D' D'  L' U' L U  L' U' L U  L' U' L U  L' U' L U  L' U' L U D'  L' U' L U D'  L' U' L U D'  L' U' L U  L' U' L U  L' U' L U  L' U' L U
+L' U' L U  L' U' L U D  L' U' L U  L' U' L U  L' U' L U  L' U' L U D'
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Eighth Cube: 
+B' B'
+D' F F
+L L
+B R' B'
+B D B'
+F' D' F
+F D B' D' B F'
+F D' F' R' D' R
+D' y  z z U R U' R' U' F' U F z z y'
+D' D' y' y'  z z U' L' U L U F U' F' z z y y
+D' D' y' y'  z z U R U' R' U' F' U F z z y y
+z z R U' R' U F' U U F U F' U U F z z
+y  z z F R U R' U' F' z z y'
+y y  z z F U R U' R' F' z z y' y'  z z F R U R' U' F' z z  
+D  L' U' L U  L' U' L U  L' U' L U D D  L' U' L U  L' U' L U  L' U' L U  L' U' L U  L' U' L U D'  L' U' L U D'  L' U' L U  L' U' L U  L' U' L U D'
+D  L' U' L U  L' U' L U  L' U' L U  L' U' L U D  L' U' L U  L' U' L U D D
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Ninth Cube:
+search graph astar T 1 1 0 rotate 
+search graph astar T 738 737 2 rotate R' U
+search graph astar T 910 907 2 rotate R' B
+search graph astar T 117969 116308 4 rotate D' D' L L
+search graph astar T 557261 549976 5 rotate U' U' L U' U'
+search graph astar T 1502 1484 3 rotate B D' B'
+search graph astar T 1139052 1122585 6 rotate R F' D' F D' R'
+search graph astar T 1139041 1122574 6 rotate R' D' L D L' R
+search graph astar T 1139193 1122726 6 rotate B D' F D F' B'
+search graph astar T 273 250 9.004 rotate D'  z z U R U' R' U' F' U F z z
+search graph astar T 949 856 9.008 rotate y y D'  z z U' L' U L U F U' F' z z y y
+search graph astar T 3634 2925 16.012 rotate y y  z z U R U' R' U' F' U F z z y' y'  z z U' L' U L U F U' F' z z
+search graph astar T 735 688 9.006 rotate D' y  z z U' L' U L U F U' F' z z y'
+search graph astar T 87 70 6.004 rotate  z z F U R U' R' F' z z
+search graph astar T 1 1 0 rotate 
+search graph astar T 1 1 0 rotate 
+search graph astar T 1 1 0 rotate 
+search graph astar T 170124 106488 54 rotate D'  L' U' L U D'  L' U' L U D'  L' U' L U D'  L' U' L U  L' U' L U  L' U' L U  L' U' L U D'  L' U' L U D  L' U' L U  L' U' L U  L' U' L U  L' U' L U
+search graph astar T 6487 5651 28 rotate  L' U' L U  L' U' L U D D  L' U' L U  L' U' L U D' D'  L' U' L U  L' U' L U
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Tenth Cube:
+search graph astar T 1 1 0 rotate 
+search graph astar T 46 46 1 rotate U'
+search graph astar T 1119 1111 2 rotate F R
+search graph astar T 12521 12348 3 rotate L L F
+search graph astar T 17382 17166 4 rotate B D' B' L
+search graph astar T 2130 2106 3 rotate L D' L'
+search graph astar T 1403 1385 3 rotate B' D' B
+search graph astar T 1381 1363 3 rotate R' D' R
+search graph astar T 1139874 1123402 6 rotate B D' B' L' D' L
+search graph astar T 273 250 9.004 rotate D'  z z U' L' U L U F U' F' z z
+search graph astar T 509 482 9.006 rotate D' y'  z z U' L' U L U F U' F' z z y
+search graph astar T 821 773 9.008 rotate y D y  z z U R U' R' U' F' U F z z y y
+search graph astar T 1867 1630 10.008 rotate y' y' D D  z z U' L' U L U F U' F' z z y y
+search graph astar T 105 88 6.008 rotate y y  z z F U R U' R' F' z z y y
+search graph astar T 1081 824 12.012 rotate y y  z z F U R U' R' F' z z y' y'  z z F R U R' U' F' z z
+search graph astar T 92 86 16.01 rotate  z z U R U' L' U R' U' L z z y'  z z U R U' L' U R' U' L z z y
+search graph astar T 1 1 0 rotate 
+search graph astar T 170125 106478 54 rotate  L' U' L U  L' U' L U D'  L' U' L U D'  L' U' L U  L' U' L U  L' U' L U D'  L' U' L U D  L' U' L U  L' U' L U D  L' U' L U  L' U' L U  L' U' L U D
+search graph astar T 6487 5651 28 rotate  L' U' L U  L' U' L U D D  L' U' L U  L' U' L U D' D'  L' U' L U  L' U' L U
+//////////////////////////////////////////////////////
+Eleventh Cube:
+For some reason did not solve after I cleaned up my scripts.
+You had told me to be done.
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Twelvth Cube:
+search graph astar T 1 1 0 rotate 
+search graph astar T 1 1 0 rotate 
+search graph astar T 329 329 2 rotate R U
+search graph astar T 101 101 1 rotate R'
+search graph astar T 115375 113762 4 rotate D' D' B B
+search graph astar T 1522 1504 3 rotate R' D R
+search graph astar T 1381 1367 3 rotate F' D F
+search graph astar T 1139041 1122574 6 rotate B D' B' L' D' L
+search graph astar T 1140014 1123540 6 rotate B' D B R D R'
+search graph astar T 579 548 9.006 rotate D' y  z z U R U' R' U' F' U F z z y'
+search graph astar T 139 122 8.006 rotate y'  z z U R U' R' U' F' U F z z y
+search graph astar T 229 208 8.006 rotate y  z z U' L' U L U F U' F' z z y'
+search graph astar T 165 148 8.006 rotate y'  z z U' L' U L U F U' F' z z y
+search graph astar T 99 82 6.006 rotate y  z z F R U R' U' F' z z y'
+search graph astar T 827 644 10.008 rotate y y  z z U R U R' U R U U R' z z y' y' D'
+search graph astar T 41 38 16.008 rotate  z z U R U' L' U R' U' L z z  z z U R U' L' U R' U' L z z
+search graph astar T 1 1 0 rotate 
+search graph astar T 155017 97637 52 rotate  L' U' L U  L' U' L U  L' U' L U  L' U' L U  L' U' L U D D  L' U' L U D  L' U' L U  L' U' L U  L' U' L U  L' U' L U  L' U' L U D  L' U' L U
+search graph astar T 6489 5653 28 rotate D'  L' U' L U  L' U' L U  L' U' L U  L' U' L U D'  L' U' L U  L' U' L U D D
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Thirteenth Cube:
+search graph astar T 1 1 0 rotate 
+search graph astar T 46 46 1 rotate U'
+search graph astar T 101 101 1 rotate R'
+search graph astar T 5253 5211 3 rotate D B B
+search graph astar T 2697 2677 3 rotate D L L
+search graph astar T 1834 1809 3 rotate L D L'
+search graph astar T 13004 12817 4 rotate D R' D' R
+search graph astar T 1139041 1122574 6 rotate R D' R' B' D' B
+search graph astar T 1139949 1123478 6 rotate L' D L B D B'
+search graph astar T 1366 1249 10.006 rotate D' D' y'  z z U R U' R' U' F' U F z z y
+search graph astar T 165 148 8.006 rotate y  z z U' L' U L U F U' F' z z y'
+search graph astar T 273 250 9.004 rotate D  z z U' L' U L U F U' F' z z
+search graph astar T 598 553 9.006 rotate D y'  z z U' L' U L U F U' F' z z y
+search graph astar T 81 67 6.004 rotate  z z F R U R' U' F' z z
+search graph astar T 827 644 10.008 rotate y y  z z U R U R' U R U U R' z z y' y' D'
+search graph astar T 72 67 16.012 rotate y' y'  z z U R U' L' U R' U' L z z y'  z z U R U' L' U R' U' L z z y'
+search graph astar T 1 1 0 rotate 
+search graph astar T 155017 97637 52 rotate  L' U' L U  L' U' L U  L' U' L U  L' U' L U  L' U' L U D D  L' U' L U D  L' U' L U  L' U' L U  L' U' L U  L' U' L U  L' U' L U D  L' U' L U
+search graph astar T 6489 5653 28 rotate D'  L' U' L U  L' U' L U  L' U' L U  L' U' L U D'  L' U' L U  L' U' L U D D
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Fourteenth Cube:
+search graph astar T 1 1 0 rotate 
+search graph astar T 242 242 2 rotate B' B'
+search graph astar T 35 35 1 rotate L
+search graph astar T 11319 11176 3 rotate D F' R
+search graph astar T 4669 4634 3 rotate L' F L
+search graph astar T 13930 13737 4 rotate D' R D' R'
+search graph astar T 121742 119985 5 rotate B R' D R B'
+search graph astar T 1381 1363 3 rotate L D' L'
+search graph astar T 1139307 1122840 6 rotate R' F' R R F R
+search graph astar T 1 1 0 rotate 
+search graph astar T 81 67 8.004 rotate  z z U' L' U L U F U' F' z z
+search graph astar T 672 617 9.006 rotate y' D'  z z U' L' U L U F U' F' z z y
+search graph astar T 949 866 9.008 rotate y y D  z z U' L' U L U F U' F' z z y y
+search graph astar T 1039 782 12.01 rotate y  z z F U R U' R' F' z z y'  z z F R U R' U' F' z z
+search graph astar T 774 594 9.008 rotate y y  z z U R U R' U R U U R' z z y y
+search graph astar T 41 37 16.012 rotate y y  z z U R U' L' U R' U' L z z y' y'  z z U R U' L' U R' U' L z z
+search graph astar T 1 1 0 rotate 
+search graph astar T 1 1 0 rotate 
+search graph astar T 6487 5651 28 rotate D D  L' U' L U  L' U' L U  L' U' L U  L' U' L U D' D'  L' U' L U  L' U' L U
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Fifteenth Cube:
+search graph astar T 1 1 0 rotate 
+search graph astar T 90 90 1 rotate U
+search graph astar T 8027 7945 3 rotate U' L' U
+search graph astar T 16453 16245 4 rotate U' R' U F'
+search graph astar T 24325 24041 4 rotate L U' F U
+search graph astar T 13537 13350 4 rotate D B' D' B
+search graph astar T 1139124 1122654 6 rotate L' D' F L D' F'
+search graph astar T 1381 1366 3 rotate F' D F
+search graph astar T 1139280 1122813 6 rotate R' D L' D' R L
+search graph astar T 102 85 8.006 rotate y  z z U R U' R' U' F' U F z z y'
+search graph astar T 618 585 9.006 rotate D y  z z U' L' U L U F U' F' z z y'
+search graph astar T 81 67 8.004 rotate  z z U R U' R' U' F' U F z z
+search graph astar T 1867 1628 10.008 rotate y y D D  z z U' L' U L U F U' F' z z y y
+search graph astar T 99 82 6.006 rotate y'  z z F U R U' R' F' z z y
+search graph astar T 815 633 10.006 rotate y  z z U R U R' U R U U R' z z y' D
+search graph astar T 146 125 24.014 rotate y  z z U R U' L' U R' U' L z z  z z U R U' L' U R' U' L z z y'  z z U R U' L' U R' U' L z z
+search graph astar T 1 1 0 rotate 
+search graph astar T 155016 97706 52 rotate  L' U' L U  L' U' L U  L' U' L U D' D'  L' U' L U  L' U' L U  L' U' L U  L' U' L U  L' U' L U D'  L' U' L U D'  L' U' L U  L' U' L U  L' U' L U
+search graph astar T 6487 5651 28 rotate  L' U' L U  L' U' L U D D  L' U' L U  L' U' L U D' D'  L' U' L U  L' U' L U
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Sixteenth Cube:
+search graph astar T 1 1 0 rotate 
+search graph astar T 480 480 2 rotate F' F'
+search graph astar T 1337 1324 2 rotate B' L
+search graph astar T 3713 3686 3 rotate B' B' R'
+search graph astar T 5253 5211 3 rotate D B B
+search graph astar T 1779 1760 3 rotate L' D' L
+search graph astar T 1139267 1122796 6 rotate R D F' D F R'
+search graph astar T 1139041 1122574 6 rotate R' D' L D' L' R
+search graph astar T 13027 12841 4 rotate R' D' D' R
+search graph astar T 1 1 0 rotate 
+search graph astar T 1 1 0 rotate 
+search graph astar T 188 171 8.006 rotate y'  z z U R U' R' U' F' U F z z y
+search graph astar T 304 279 9.004 rotate D'  z z U R U' R' U' F' U F z z
+search graph astar T 1039 782 12.01 rotate y  z z F U R U' R' F' z z y'  z z F R U R' U' F' z z
+search graph astar T 774 594 9.008 rotate y y  z z U R U R' U R U U R' z z y y
+search graph astar T 41 38 16.008 rotate  z z U R U' L' U R' U' L z z  z z U R U' L' U R' U' L z z
+search graph astar T 1 1 0 rotate 
+search graph astar T 155011 97733 52 rotate  L' U' L U  L' U' L U  L' U' L U D'  L' U' L U D'  L' U' L U  L' U' L U  L' U' L U  L' U' L U  L' U' L U D' D'  L' U' L U  L' U' L U  L' U' L U
+search graph astar T 6487 5651 28 rotate  L' U' L U  L' U' L U D D  L' U' L U  L' U' L U D' D'  L' U' L U  L' U' L U
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Seventeenth Cube:
+search graph astar T 1 1 0 rotate 
+search graph astar T 46 46 1 rotate U'
+search graph astar T 6695 6637 3 rotate R U' R'
+search graph astar T 32247 31866 4 rotate U' L' U B'
+search graph astar T 4669 4634 3 rotate L' F L
+search graph astar T 1649 1629 3 rotate R' D' R
+search graph astar T 1412 1393 3 rotate R D R'
+search graph astar T 12961 12775 4 rotate L D' D' L'
+search graph astar T 1139621 1123152 6 rotate L' B' L' B D' L
+search graph astar T 1 1 0 rotate 
+search graph astar T 139 122 8.006 rotate y'  z z U R U' R' U' F' U F z z y
+search graph astar T 886 819 9.008 rotate D' y' y'  z z U R U' R' U' F' U F z z y y
+search graph astar T 722 669 9.006 rotate y D  z z U R U' R' U' F' U F z z y'
+search graph astar T 105 88 6.008 rotate y y  z z F U R U' R' F' z z y y
+search graph astar T 960 738 11.004 rotate D' D'  z z U R U R' U R U U R' z z
+search graph astar T 105 98 16.012 rotate  z z U R U' L' U R' U' L z z y y  z z U R U' L' U R' U' L z z y y
+search graph astar T 1 1 0 rotate 
+search graph astar T 155004 97709 52 rotate  L' U' L U  L' U' L U  L' U' L U D  L' U' L U  L' U' L U D  L' U' L U  L' U' L U  L' U' L U D'  L' U' L U D'  L' U' L U  L' U' L U  L' U' L U
+search graph astar T 3633 3211 26 rotate  L' U' L U  L' U' L U  L' U' L U  L' U' L U D  L' U' L U  L' U' L U D'
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Eighteenth Cube:
+search graph astar T 1 1 0 rotate 
+search graph astar T 1141 1132 2 rotate R' U'
+search graph astar T 3952 3923 3 rotate U' B' U
+search graph astar T 2697 2677 3 rotate D L L
+search graph astar T 480 480 2 rotate F' F'
+search graph astar T 1858 1837 3 rotate L' D' L
+search graph astar T 12961 12775 4 rotate D B' D B
+search graph astar T 1139041 1122574 6 rotate L D' L' F' D' F
+search graph astar T 13082 12896 4 rotate D R' D' R
+search graph astar T 579 548 9.006 rotate D' y  z z U R U' R' U' F' U F z z y'
+search graph astar T 1435 1309 10.006 rotate D' y D'  z z U' L' U L U F U' F' z z y'
+search graph astar T 2641 2090 13.004 rotate  z z R U' R' U F' U U F U F' U U F z z
+search graph astar T 2686 2125 13.006 rotate y'  z z R U' R' U F' U U F U F' U U F z z y
+search graph astar T 1 1 0 rotate 
+search graph astar T 815 634 10.006 rotate y'  z z U R U R' U R U U R' z z y D'
+search graph astar T 1 1 0 rotate 
+search graph astar T 1 1 0 rotate 
+search graph astar T 1 1 0 rotate 
+search graph astar T 6489 5653 28 rotate D'  L' U' L U  L' U' L U  L' U' L U  L' U' L U D'  L' U' L U  L' U' L U D D
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Ninteenth Cube:
+search graph astar T 1 1 0 rotate 
+search graph astar T 46 46 1 rotate U'
+search graph astar T 1282 1271 2 rotate B' R'
+search graph astar T 19734 19497 4 rotate F U L' U'
+search graph astar T 368420 363606 5 rotate R R B R R
+search graph astar T 1 1 0 rotate 
+search graph astar T 1446 1427 3 rotate B D B'
+search graph astar T 1139041 1122574 6 rotate F' D F L D L'
+search graph astar T 1140038 1123567 6 rotate F R F R' D F'
+search graph astar T 1 1 0 rotate 
+search graph astar T 81 67 8.004 rotate  z z U' L' U L U F U' F' z z
+search graph astar T 3634 2925 16.012 rotate y' y'  z z U' L' U L U F U' F' z z y' y'  z z U R U' R' U' F' U F z z
+search graph astar T 747 700 9.006 rotate D y'  z z U R U' R' U' F' U F z z y
+search graph astar T 99 82 6.006 rotate y  z z F R U R' U' F' z z y'
+search graph astar T 821 639 10.008 rotate y' y'  z z U R U R' U R U U R' z z y y D
+search graph astar T 9 9 8.004 rotate  z z U R U' L' U R' U' L z z
+search graph astar T 1 1 0 rotate 
+search graph astar T 1 1 0 rotate 
+search graph astar T 3638 3215 26 rotate  L' U' L U  L' U' L U D'  L' U' L U  L' U' L U  L' U' L U  L' U' L U D
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+Twentieth Cube:
+search graph astar T 1 1 0 rotate 
+search graph astar T 68 68 1 rotate B'
+search graph astar T 35 35 1 rotate L
+search graph astar T 372 372 2 rotate F' R
+search graph astar T 8939 8844 3 rotate U' R' U
+search graph astar T 13396 13207 4 rotate B' D D B
+search graph astar T 12993 12807 4 rotate D' L D L'
+search graph astar T 1381 1363 3 rotate B D' B'
+search graph astar T 1139193 1122726 6 rotate B D' F D F' B'
+search graph astar T 1 1 0 rotate 
+search graph astar T 81 67 8.004 rotate  z z U' L' U L U F U' F' z z
+search graph astar T 487 456 9.006 rotate y' D  z z U R U' R' U' F' U F z z y
+search graph astar T 2641 2093 13.004 rotate  z z R U' R' U F' U U F U F' U U F z z
+search graph astar T 105 88 6.008 rotate y y  z z F U R U' R' F' z z y y
+search graph astar T 758 581 9.006 rotate y  z z U R U R' U R U U R' z z y'
+search graph astar T 9 9 8.004 rotate  z z U R U' L' U R' U' L z z
+search graph astar T 1 1 0 rotate 
+search graph astar T 155012 97759 52 rotate  L' U' L U  L' U' L U  L' U' L U D  L' U' L U  L' U' L U  L' U' L U  L' U' L U D  L' U' L U D  L' U' L U D  L' U' L U  L' U' L U  L' U' L U
+search graph astar T 6490 5653 28 rotate D  L' U' L U  L' U' L U D  L' U' L U  L' U' L U  L' U' L U  L' U' L U D D
+//////////////////////////////////////////////////////
+

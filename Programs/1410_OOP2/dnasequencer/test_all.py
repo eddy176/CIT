@@ -9,6 +9,7 @@ from test_fileToList import TestFileToList
 from test_returnFirstString import TestReturnFirstString
 from test_strandsAreNotEmpty import TestStrandsAreNotEmpty
 from test_strandsAreEqualLengths import TestStrandsAreEqualLengths
+from test_candidateOverlapsTarget import TestCandidateOverlapsTarget
 from test_findLargestOverlap import TestFindLargestOverlap
 from test_findBestCandidate import TestFindBestCandidate
 from test_joinTwoStrands import TestJoinTwoStrands
@@ -19,6 +20,7 @@ if __name__ == '__main__':
         TestReturnFirstString,
         TestStrandsAreNotEmpty,
         TestStrandsAreEqualLengths,
+        TestCandidateOverlapsTarget,
         TestFindLargestOverlap,
         TestFindBestCandidate,
         TestJoinTwoStrands

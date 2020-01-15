@@ -1,0 +1,35 @@
+# maximum number of states to explore
+config generation_limit 100000
+
+# number of restarts
+config restart 10
+
+# simulated annealing parameters
+config start_temperature 10.0
+config min_temperature 0.01
+config temperature_reduction 100.0
+config resolution 1000000
+
+
+#
+# simple graph
+#
+initial
+
+5 
+0 1 1 
+0 2 1 
+3 0 1 
+0 4 1 
+1 2 2 
+1 3 2 
+4 1 2 
+3 2 3 
+2 4 3 
+3 4 4 
+-1 -1 -1 
+
+# local search
+#local hillclimb
+#local firstchoice
+local annealing

@@ -1,0 +1,16 @@
+wumpus notes:::
+
+gimli chooseAction might need to be modified?
+plan is a queue of actions to take
+
+gimli managewidthheight has kb.tellrules in it
+fix by ruling out breezes and stenches outside of limits
+
+
+ask Curtis about minimizing moves
+
+
+
+ask Curtis about how to add probability most effectively=
+write a method that returns true or false depending on if
+it is worth the risk or not

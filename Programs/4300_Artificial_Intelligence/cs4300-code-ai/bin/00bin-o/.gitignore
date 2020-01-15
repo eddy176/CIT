@@ -1,0 +1,28 @@
+#
+# get rid of unexpected files
+#
+*
+
+# except, keep .gitignore
+!.gitignore
+
+# keep known files
+!ScavengerData
+!ScavengerWorlds
+
+!config.cmd
+!definedcubes.cmd
+!initcubes.cmd
+!run_for_output.py
+!search.cmd
+!statistic_cmd_creator.py
+!stepsearch.cmd
+!test.cmd
+!out.txt
+!assignment3.cmd
+!master.sh
+!definecubes.cmd
+!defineMoves.cmd
+!faceletheuristicout.txt
+!cubieheuristic.txt
+!configstepsearch.cmd

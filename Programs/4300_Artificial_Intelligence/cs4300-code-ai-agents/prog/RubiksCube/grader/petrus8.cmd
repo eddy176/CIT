@@ -1,0 +1,3 @@
+init goal orange_d_c_rbwrrg orange_d_c_gryrrb blue_d_c_ygoggr blue_d_c_wggrog yellow_d_c_wrwgwb yellow_d_c_wbwowg orange_d_c_rbwryr orange_d_c_gryrwr blue_d_c_ygogwg blue_d_c_wggryg yellow_d_c_wrwgwo yellow_d_c_wbwowr
+search graph astar
+run petrus9.cmd

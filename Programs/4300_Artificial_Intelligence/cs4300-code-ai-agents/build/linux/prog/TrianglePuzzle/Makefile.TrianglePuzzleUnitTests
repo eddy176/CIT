@@ -1,0 +1,37 @@
+MAKE_DIR := $(shell mkpath="."; count=0; while [ \( ! -e "$$mkpath/Makefile.top" \) -a \( "$$count" -lt 10 \) ]; do mkpath="$$mkpath/.."; count=`echo $$count | awk '{print $$1 + 1;}'`; done; echo $$mkpath;)
+include $(MAKE_DIR)/Makefile.top
+
+LOCAL_PROG    := 
+LOCAL_PART    := TrianglePuzzle
+LOCAL_SRC_DIR := $(PROG_DIR)/$(LOCAL_PART)
+LOCAL_INC_DIR := $(PROG_DIR)/$(LOCAL_PART)
+LOCAL_AGENT_SELECT := 
+
+LOCAL_SRC := \
+	$(LOCAL_AGENT_SELECT) \
+	TrianglePuzzle.cpp \
+	TriangleSolver.cpp
+
+LOCAL_HEADERS := \
+	TrianglePuzzle.h \
+	TriangleSolver.h
+
+CXX_HEADERS := \
+	$(LOCAL_HEADERS)
+
+CXX_SRC  := \
+	$(LOCAL_SRC)
+
+CXX_TEST_SRC := $(shell ls -1 $(LOCAL_SRC_DIR)/tests/*.cpp)
+
+TARGET_HEADERS    := 
+TARGET_OBJS       := ${CXX_SRC:%.cpp=$(OBJ_BASE)/%.o}
+TARGET_LIB        := 
+TARGET_PROG       := 
+
+include $(MAKE_DIR)/Makefile.rules
+include $(MAKE_DIR)/Makefile.dep
+
+# Local Variables:
+# mode:makefile
+# End:

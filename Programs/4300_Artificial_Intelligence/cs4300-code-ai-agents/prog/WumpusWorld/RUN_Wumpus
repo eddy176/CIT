@@ -1,0 +1,39 @@
+#!/bin/bash
+
+#
+# Run this in ai/bin/00bin-o
+#
+if [ ! -x ./WumpusServer ]; then
+    echo "WumpusServer is missing"
+    exit 1
+fi
+if [ ! -x ./WumpusDisplay ]; then
+    echo "WumpusDisplay is missing"
+    exit 1
+fi
+if [ ! -x ./WumpusAgent ]; then
+    echo "WumpusAgent is missing"
+    exit 1
+fi
+
+# Launch the game server
+./WumpusServer --agents 1 \
+               --delay 0.0 \
+               --displays 1 \
+               --height 3 --max-height 5 \
+               --width 3 --max-width 5 \
+               --pit-probability 0.2 \
+               --seed 743217 \
+               --steps 250 \
+               --sleep 0.0 \
+               --runs 100 \
+               --trace 0 >server.log 2>server.err &
+echo "Waiting for server to get started"
+sleep 2
+
+# Launch the display
+./WumpusDisplay >display.log 2>display.err &
+
+# Launch the agent player
+./WumpusAgent --agent G --trace 1 >agent1.log 2>agent1.err &
+#./WumpusAgent --agent G --trace 1

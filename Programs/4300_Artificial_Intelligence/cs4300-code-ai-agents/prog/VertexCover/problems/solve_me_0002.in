@@ -1,0 +1,25 @@
+# auto-generated vertex-cover problem
+config generation_limit 100000
+config restart 1000
+config start_temperature 10.0
+config min_temperature 0.01
+config temperature_reduction 100.0
+config resolution 1000000
+
+initial
+5
+0 2 1
+2 4 1
+1 2 1
+1 4 1
+0 1 1
+0 3 1
+2 3 1
+0 4 1
+-1 -1 -1
+
+local hillclimb
+#local firstchoice
+#local annealing
+
+

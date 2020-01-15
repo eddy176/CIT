@@ -1,0 +1,6 @@
+- State::HashValue() or some other trick to make ClosedList fast.
+- pretty/consistent format all files
+- remove new/delete problems for users
+- better comments/doxygen
+
+

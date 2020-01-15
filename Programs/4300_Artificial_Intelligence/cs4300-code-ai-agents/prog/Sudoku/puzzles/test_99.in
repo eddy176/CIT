@@ -1,0 +1,20 @@
+config board_size 9
+# based on 1.5Gbyte of RAM for node storage
+config generation_limit 2100000
+config storage_limit    2100000
+
+# 4-star
+initial
+
+. . 5 . . 3 2 . .
+1 . 6 . 8 . 7 . 5
+. . . . . 2 . . .
+7 . 3 . . . . . .
+. 9 . . . . . 4 .
+. . . . . . 5 . 7
+. . . 4 . . . . .
+5 . 9 . 2 . 1 . 8
+. . 8 5 . . 9 . .
+
+search tree bfs
+search tree dfs

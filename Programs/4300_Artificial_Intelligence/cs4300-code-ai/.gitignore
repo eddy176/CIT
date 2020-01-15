@@ -1,0 +1,15 @@
+# emacs trash
+*~
+
+#
+# get rid of unexpected files
+#
+*
+
+# except, keep .gitignore
+!.gitignore
+
+# keep expected subdirectories
+!bin/
+!include/
+!lib/

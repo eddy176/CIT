@@ -1,0 +1,11 @@
+#
+# get rid of unexpected files
+#
+*
+
+# except, keep .gitignore
+!.gitignore
+
+# keep expected files
+!ScavengerData
+!ScavengerWorlds

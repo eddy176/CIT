@@ -1,0 +1,130 @@
+#
+# Student's wumpus program that caused a system crash
+#
+tell ! Pit_1_1
+tell ! Wumpus_1_1
+tell Out_Of_Bounds_1_0
+tell Out_Of_Bounds_1_5
+tell Out_Of_Bounds_2_0
+tell Out_Of_Bounds_2_5
+tell Out_Of_Bounds_3_0
+tell Out_Of_Bounds_3_5
+tell Out_Of_Bounds_4_0
+tell Out_Of_Bounds_4_5
+tell Out_Of_Bounds_0_1
+tell Out_Of_Bounds_5_1
+tell Out_Of_Bounds_0_2
+tell Out_Of_Bounds_5_2
+tell Out_Of_Bounds_0_3
+tell Out_Of_Bounds_5_3
+tell Out_Of_Bounds_0_4
+tell Out_Of_Bounds_5_4
+tell !Out_Of_Bounds_1_1
+tell Breeze_1_1 => (Pit_1_1 | Pit_2_1 | Pit_0_1 | Pit_1_2 | Pit_1_0)
+tell (!Breeze_1_1) => ((!Pit_1_1) & (!Pit_2_1) & (!Pit_0_1) & (!Pit_1_2) & (!Pit_1_0))
+tell Stench_1_1 => (Wumpus_1_1 | Wumpus_2_1 | Wumpus_0_1 | Wumpus_1_2 | Wumpus_1_0)
+tell (!Stench_1_1) => ((!Wumpus_1_1) & (!Wumpus_2_1) & (!Wumpus_0_1) & (!Wumpus_1_2) & (!Wumpus_1_0))
+tell Safe_1_1 <=> ((!Pit_1_1) & ((!Wumpus_1_1) | (Dead_Wumpus)) & (!Out_Of_Bounds_1_1))
+tell !Out_Of_Bounds_1_2
+tell Breeze_1_2 => (Pit_1_2 | Pit_2_2 | Pit_0_2 | Pit_1_3 | Pit_1_1)
+tell (!Breeze_1_2) => ((!Pit_1_2) & (!Pit_2_2) & (!Pit_0_2) & (!Pit_1_3) & (!Pit_1_1))
+tell Stench_1_2 => (Wumpus_1_2 | Wumpus_2_2 | Wumpus_0_2 | Wumpus_1_3 | Wumpus_1_1)
+tell (!Stench_1_2) => ((!Wumpus_1_2) & (!Wumpus_2_2) & (!Wumpus_0_2) & (!Wumpus_1_3) & (!Wumpus_1_1))
+tell Safe_1_2 <=> ((!Pit_1_2) & ((!Wumpus_1_2) | (Dead_Wumpus)) & (!Out_Of_Bounds_1_2))
+tell !Out_Of_Bounds_1_3
+tell Breeze_1_3 => (Pit_1_3 | Pit_2_3 | Pit_0_3 | Pit_1_4 | Pit_1_2)
+tell (!Breeze_1_3) => ((!Pit_1_3) & (!Pit_2_3) & (!Pit_0_3) & (!Pit_1_4) & (!Pit_1_2))
+tell Stench_1_3 => (Wumpus_1_3 | Wumpus_2_3 | Wumpus_0_3 | Wumpus_1_4 | Wumpus_1_2)
+tell (!Stench_1_3) => ((!Wumpus_1_3) & (!Wumpus_2_3) & (!Wumpus_0_3) & (!Wumpus_1_4) & (!Wumpus_1_2))
+tell Safe_1_3 <=> ((!Pit_1_3) & ((!Wumpus_1_3) | (Dead_Wumpus)) & (!Out_Of_Bounds_1_3))
+tell !Out_Of_Bounds_1_4
+tell Breeze_1_4 => (Pit_1_4 | Pit_2_4 | Pit_0_4 | Pit_1_5 | Pit_1_3)
+tell (!Breeze_1_4) => ((!Pit_1_4) & (!Pit_2_4) & (!Pit_0_4) & (!Pit_1_5) & (!Pit_1_3))
+tell Stench_1_4 => (Wumpus_1_4 | Wumpus_2_4 | Wumpus_0_4 | Wumpus_1_5 | Wumpus_1_3)
+tell (!Stench_1_4) => ((!Wumpus_1_4) & (!Wumpus_2_4) & (!Wumpus_0_4) & (!Wumpus_1_5) & (!Wumpus_1_3))
+tell Safe_1_4 <=> ((!Pit_1_4) & ((!Wumpus_1_4) | (Dead_Wumpus)) & (!Out_Of_Bounds_1_4))
+tell !Out_Of_Bounds_2_1
+tell Breeze_2_1 => (Pit_2_1 | Pit_3_1 | Pit_1_1 | Pit_2_2 | Pit_2_0)
+tell (!Breeze_2_1) => ((!Pit_2_1) & (!Pit_3_1) & (!Pit_1_1) & (!Pit_2_2) & (!Pit_2_0))
+tell Stench_2_1 => (Wumpus_2_1 | Wumpus_3_1 | Wumpus_1_1 | Wumpus_2_2 | Wumpus_2_0)
+tell (!Stench_2_1) => ((!Wumpus_2_1) & (!Wumpus_3_1) & (!Wumpus_1_1) & (!Wumpus_2_2) & (!Wumpus_2_0))
+tell Safe_2_1 <=> ((!Pit_2_1) & ((!Wumpus_2_1) | (Dead_Wumpus)) & (!Out_Of_Bounds_2_1))
+tell !Out_Of_Bounds_2_2
+tell Breeze_2_2 => (Pit_2_2 | Pit_3_2 | Pit_1_2 | Pit_2_3 | Pit_2_1)
+tell (!Breeze_2_2) => ((!Pit_2_2) & (!Pit_3_2) & (!Pit_1_2) & (!Pit_2_3) & (!Pit_2_1))
+tell Stench_2_2 => (Wumpus_2_2 | Wumpus_3_2 | Wumpus_1_2 | Wumpus_2_3 | Wumpus_2_1)
+tell (!Stench_2_2) => ((!Wumpus_2_2) & (!Wumpus_3_2) & (!Wumpus_1_2) & (!Wumpus_2_3) & (!Wumpus_2_1))
+tell Safe_2_2 <=> ((!Pit_2_2) & ((!Wumpus_2_2) | (Dead_Wumpus)) & (!Out_Of_Bounds_2_2))
+tell !Out_Of_Bounds_2_3
+tell Breeze_2_3 => (Pit_2_3 | Pit_3_3 | Pit_1_3 | Pit_2_4 | Pit_2_2)
+tell (!Breeze_2_3) => ((!Pit_2_3) & (!Pit_3_3) & (!Pit_1_3) & (!Pit_2_4) & (!Pit_2_2))
+tell Stench_2_3 => (Wumpus_2_3 | Wumpus_3_3 | Wumpus_1_3 | Wumpus_2_4 | Wumpus_2_2)
+tell (!Stench_2_3) => ((!Wumpus_2_3) & (!Wumpus_3_3) & (!Wumpus_1_3) & (!Wumpus_2_4) & (!Wumpus_2_2))
+tell Safe_2_3 <=> ((!Pit_2_3) & ((!Wumpus_2_3) | (Dead_Wumpus)) & (!Out_Of_Bounds_2_3))
+tell !Out_Of_Bounds_2_4
+tell Breeze_2_4 => (Pit_2_4 | Pit_3_4 | Pit_1_4 | Pit_2_5 | Pit_2_3)
+tell (!Breeze_2_4) => ((!Pit_2_4) & (!Pit_3_4) & (!Pit_1_4) & (!Pit_2_5) & (!Pit_2_3))
+tell Stench_2_4 => (Wumpus_2_4 | Wumpus_3_4 | Wumpus_1_4 | Wumpus_2_5 | Wumpus_2_3)
+tell (!Stench_2_4) => ((!Wumpus_2_4) & (!Wumpus_3_4) & (!Wumpus_1_4) & (!Wumpus_2_5) & (!Wumpus_2_3))
+tell Safe_2_4 <=> ((!Pit_2_4) & ((!Wumpus_2_4) | (Dead_Wumpus)) & (!Out_Of_Bounds_2_4))
+tell !Out_Of_Bounds_3_1
+tell Breeze_3_1 => (Pit_3_1 | Pit_4_1 | Pit_2_1 | Pit_3_2 | Pit_3_0)
+tell (!Breeze_3_1) => ((!Pit_3_1) & (!Pit_4_1) & (!Pit_2_1) & (!Pit_3_2) & (!Pit_3_0))
+tell Stench_3_1 => (Wumpus_3_1 | Wumpus_4_1 | Wumpus_2_1 | Wumpus_3_2 | Wumpus_3_0)
+tell (!Stench_3_1) => ((!Wumpus_3_1) & (!Wumpus_4_1) & (!Wumpus_2_1) & (!Wumpus_3_2) & (!Wumpus_3_0))
+tell Safe_3_1 <=> ((!Pit_3_1) & ((!Wumpus_3_1) | (Dead_Wumpus)) & (!Out_Of_Bounds_3_1))
+tell !Out_Of_Bounds_3_2
+tell Breeze_3_2 => (Pit_3_2 | Pit_4_2 | Pit_2_2 | Pit_3_3 | Pit_3_1)
+tell (!Breeze_3_2) => ((!Pit_3_2) & (!Pit_4_2) & (!Pit_2_2) & (!Pit_3_3) & (!Pit_3_1))
+tell Stench_3_2 => (Wumpus_3_2 | Wumpus_4_2 | Wumpus_2_2 | Wumpus_3_3 | Wumpus_3_1)
+tell (!Stench_3_2) => ((!Wumpus_3_2) & (!Wumpus_4_2) & (!Wumpus_2_2) & (!Wumpus_3_3) & (!Wumpus_3_1))
+tell Safe_3_2 <=> ((!Pit_3_2) & ((!Wumpus_3_2) | (Dead_Wumpus)) & (!Out_Of_Bounds_3_2))
+tell !Out_Of_Bounds_3_3
+tell Breeze_3_3 => (Pit_3_3 | Pit_4_3 | Pit_2_3 | Pit_3_4 | Pit_3_2)
+tell (!Breeze_3_3) => ((!Pit_3_3) & (!Pit_4_3) & (!Pit_2_3) & (!Pit_3_4) & (!Pit_3_2))
+tell Stench_3_3 => (Wumpus_3_3 | Wumpus_4_3 | Wumpus_2_3 | Wumpus_3_4 | Wumpus_3_2)
+tell (!Stench_3_3) => ((!Wumpus_3_3) & (!Wumpus_4_3) & (!Wumpus_2_3) & (!Wumpus_3_4) & (!Wumpus_3_2))
+tell Safe_3_3 <=> ((!Pit_3_3) & ((!Wumpus_3_3) | (Dead_Wumpus)) & (!Out_Of_Bounds_3_3))
+tell !Out_Of_Bounds_3_4
+tell Breeze_3_4 => (Pit_3_4 | Pit_4_4 | Pit_2_4 | Pit_3_5 | Pit_3_3)
+tell (!Breeze_3_4) => ((!Pit_3_4) & (!Pit_4_4) & (!Pit_2_4) & (!Pit_3_5) & (!Pit_3_3))
+tell Stench_3_4 => (Wumpus_3_4 | Wumpus_4_4 | Wumpus_2_4 | Wumpus_3_5 | Wumpus_3_3)
+tell (!Stench_3_4) => ((!Wumpus_3_4) & (!Wumpus_4_4) & (!Wumpus_2_4) & (!Wumpus_3_5) & (!Wumpus_3_3))
+tell Safe_3_4 <=> ((!Pit_3_4) & ((!Wumpus_3_4) | (Dead_Wumpus)) & (!Out_Of_Bounds_3_4))
+tell !Out_Of_Bounds_4_1
+tell Breeze_4_1 => (Pit_4_1 | Pit_5_1 | Pit_3_1 | Pit_4_2 | Pit_4_0)
+tell (!Breeze_4_1) => ((!Pit_4_1) & (!Pit_5_1) & (!Pit_3_1) & (!Pit_4_2) & (!Pit_4_0))
+tell Stench_4_1 => (Wumpus_4_1 | Wumpus_5_1 | Wumpus_3_1 | Wumpus_4_2 | Wumpus_4_0)
+tell (!Stench_4_1) => ((!Wumpus_4_1) & (!Wumpus_5_1) & (!Wumpus_3_1) & (!Wumpus_4_2) & (!Wumpus_4_0))
+tell Safe_4_1 <=> ((!Pit_4_1) & ((!Wumpus_4_1) | (Dead_Wumpus)) & (!Out_Of_Bounds_4_1))
+tell !Out_Of_Bounds_4_2
+tell Breeze_4_2 => (Pit_4_2 | Pit_5_2 | Pit_3_2 | Pit_4_3 | Pit_4_1)
+tell (!Breeze_4_2) => ((!Pit_4_2) & (!Pit_5_2) & (!Pit_3_2) & (!Pit_4_3) & (!Pit_4_1))
+tell Stench_4_2 => (Wumpus_4_2 | Wumpus_5_2 | Wumpus_3_2 | Wumpus_4_3 | Wumpus_4_1)
+tell (!Stench_4_2) => ((!Wumpus_4_2) & (!Wumpus_5_2) & (!Wumpus_3_2) & (!Wumpus_4_3) & (!Wumpus_4_1))
+tell Safe_4_2 <=> ((!Pit_4_2) & ((!Wumpus_4_2) | (Dead_Wumpus)) & (!Out_Of_Bounds_4_2))
+tell !Out_Of_Bounds_4_3
+tell Breeze_4_3 => (Pit_4_3 | Pit_5_3 | Pit_3_3 | Pit_4_4 | Pit_4_2)
+tell (!Breeze_4_3) => ((!Pit_4_3) & (!Pit_5_3) & (!Pit_3_3) & (!Pit_4_4) & (!Pit_4_2))
+tell Stench_4_3 => (Wumpus_4_3 | Wumpus_5_3 | Wumpus_3_3 | Wumpus_4_4 | Wumpus_4_2)
+tell (!Stench_4_3) => ((!Wumpus_4_3) & (!Wumpus_5_3) & (!Wumpus_3_3) & (!Wumpus_4_4) & (!Wumpus_4_2))
+tell Safe_4_3 <=> ((!Pit_4_3) & ((!Wumpus_4_3) | (Dead_Wumpus)) & (!Out_Of_Bounds_4_3))
+
+tell !Out_Of_Bounds_4_4
+tell Breeze_4_4 => (Pit_4_4 | Pit_5_4 | Pit_3_4 | Pit_4_5 | Pit_4_3)
+tell (!Breeze_4_4) => ((!Pit_4_4) & (!Pit_5_4) & (!Pit_3_4) & (!Pit_4_5) & (!Pit_4_3))
+tell Stench_4_4 => (Wumpus_4_4 | Wumpus_5_4 | Wumpus_3_4 | Wumpus_4_5 | Wumpus_4_3)
+tell (!Stench_4_4) => ((!Wumpus_4_4) & (!Wumpus_5_4) & (!Wumpus_3_4) & (!Wumpus_4_5) & (!Wumpus_4_3))
+tell Safe_4_4 <=> ((!Pit_4_4) & ((!Wumpus_4_4) | (Dead_Wumpus)) & (!Out_Of_Bounds_4_4))
+
+#tell Safe_4_4 <=> ((!Pit_4_4) & ((!Wumpus_4_4) | (Dead_Wumpus)) & (!Out_Of_Bounds_4_4))
+#tell Safe_4_4 <=> ((!Pit_4_4) & ((!Wumpus_4_4) | (Dead_Wumpus)))
+#tell Safe_4_4 <=> (Pit_4_4 & (Wumpus_4_4 | Dead_Wumpus))
+
+
+list
+#cnf
+
+#Here's the line that segfaults after all those tells:
+dpll Safe_1_1
+

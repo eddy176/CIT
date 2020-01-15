@@ -1,0 +1,242 @@
+# The formulation of this problem is taken from Artificial Intelligence, A Modern Approach, 3rd Edition, Chapter 7: By Russell and Norvig
+# The propositional logic is mine.
+#
+#          Wumpus Map
+#   P = Pit in location
+#   W = Wumpus in location
+#   B = Breeze felt by adventurer in location
+#   S = Stench smelt by adventurer in location
+#   The adventurer has not explored the full
+#   cavern, so not all breezes and stenches have
+#   been detected yet.
+#
+#      +-----+-----+-----+-----+
+#      |     |     |     |     |
+#   4  |     |     |     |  P  |
+#      |     |     |     |     |
+#      +-----+-----+-----+-----+
+#      |     |     |     |     |
+#   3  |  W  |     |  P  |     |
+#      |     |     |     |     |
+#      +-----+-----+-----+-----+
+#      | !B  |     |     |     |
+#   2  |  S  |     |     |     |
+#      |     |     |     |     |
+#      +-----+-----+-----+-----+
+#      | !B  |  B  |     |     |
+#   1  | !S  | !S  |  P  |     |
+#      |     |     |     |     |
+#      +-----+-----+-----+-----+
+#         1     2     3     4
+#
+# "PHYSICS" of wumpus world
+# B_x_y = breeze felt in x,y
+# P_x_y = pit exists in x,y
+# S_x_y = stench smelt in x,y
+# W_x_y = wumpus exists in x,y
+# Safe_x_y = it is safe to venture into x,y
+tell ( B_1_1 <=> ( P_1_2 | P_2_1 ) )
+tell ( B_1_2 <=> ( ( P_1_1 | P_1_3 ) | P_2_2 ) )
+tell ( B_1_3 <=> ( ( P_1_2 | P_1_4 ) | P_2_3 ) )
+tell ( B_1_4 <=> ( P_1_3 | P_2_4 ) )
+tell ( B_2_1 <=> ( ( P_1_1 | P_2_2 ) | P_3_1 ) )
+tell ( B_2_2 <=> ( ( ( P_1_2 | P_2_1 ) | P_2_3 ) | P_3_2 ) )
+tell ( B_2_3 <=> ( ( ( P_1_3 | P_2_2 ) | P_2_4 ) | P_3_3 ) )
+tell ( B_2_4 <=> ( ( P_1_4 | P_2_3 ) | P_3_4 ) )
+tell ( B_3_1 <=> ( ( P_2_1 | P_3_2 ) | P_4_1 ) )
+tell ( B_3_2 <=> ( ( ( P_2_2 | P_3_1 ) | P_3_3 ) | P_4_2 ) )
+tell ( B_3_3 <=> ( ( ( P_2_3 | P_3_2 ) | P_3_4 ) | P_4_3 ) )
+tell ( B_3_4 <=> ( ( P_2_4 | P_3_3 ) | P_4_4 ) )
+tell ( B_4_1 <=> ( P_3_1 | P_4_2 ) )
+tell ( B_4_2 <=> ( ( P_3_2 | P_4_1 ) | P_4_3 ) )
+tell ( B_4_3 <=> ( ( P_3_3 | P_4_2 ) | P_4_4 ) )
+tell ( B_4_4 <=> ( P_3_4 | P_4_3 ) )
+tell ( S_1_1 <=> ( ( W_1_1 | W_1_2 ) | W_2_1 ) )
+tell ( S_1_2 <=> ( ( ( W_1_2 | W_1_1 ) | W_1_3 ) | W_2_2 ) )
+tell ( S_1_3 <=> ( ( ( W_1_3 | W_1_2 ) | W_1_4 ) | W_2_3 ) )
+tell ( S_1_4 <=> ( ( W_1_4 | W_1_3 ) | W_2_4 ) )
+tell ( S_2_1 <=> ( ( ( W_2_1 | W_1_1 ) | W_2_2 ) | W_3_1 ) )
+tell ( S_2_2 <=> ( ( ( ( W_2_2 | W_1_2 ) | W_2_1 ) | W_2_3 ) | W_3_2 ) )
+tell ( S_2_3 <=> ( ( ( ( W_2_3 | W_1_3 ) | W_2_2 ) | W_2_4 ) | W_3_3 ) )
+tell ( S_2_4 <=> ( ( ( W_2_4 | W_1_4 ) | W_2_3 ) | W_3_4 ) )
+tell ( S_3_1 <=> ( ( ( W_3_1 | W_2_1 ) | W_3_2 ) | W_4_1 ) )
+tell ( S_3_2 <=> ( ( ( ( W_3_2 | W_2_2 ) | W_3_1 ) | W_3_3 ) | W_4_2 ) )
+tell ( S_3_3 <=> ( ( ( ( W_3_3 | W_2_3 ) | W_3_2 ) | W_3_4 ) | W_4_3 ) )
+tell ( S_3_4 <=> ( ( ( W_3_4 | W_2_4 ) | W_3_3 ) | W_4_4 ) )
+tell ( S_4_1 <=> ( ( W_4_1 | W_3_1 ) | W_4_2 ) )
+tell ( S_4_2 <=> ( ( ( W_4_2 | W_3_2 ) | W_4_1 ) | W_4_3 ) )
+tell ( S_4_3 <=> ( ( ( W_4_3 | W_3_3 ) | W_4_2 ) | W_4_4 ) )
+tell ( S_4_4 <=> ( ( W_4_4 | W_3_4 ) | W_4_3 ) )
+tell ( ( ( ( ( ( ( ( ( ( ( ( ( ( ( W_1_1 | W_1_2 ) | W_1_3 ) | W_1_4 ) | W_2_1 ) | W_2_2 ) | W_2_3 ) | W_2_4 ) | W_3_1 ) | W_3_2 ) | W_3_3 ) | W_3_4 ) | W_4_1 ) | W_4_2 ) | W_4_3 ) | W_4_4 )
+tell ( ( !W_1_1 ) | ( !W_1_2 ) )
+tell ( ( !W_1_1 ) | ( !W_1_3 ) )
+tell ( ( !W_1_1 ) | ( !W_1_4 ) )
+tell ( ( !W_1_1 ) | ( !W_2_1 ) )
+tell ( ( !W_1_1 ) | ( !W_2_2 ) )
+tell ( ( !W_1_1 ) | ( !W_2_3 ) )
+tell ( ( !W_1_1 ) | ( !W_2_4 ) )
+tell ( ( !W_1_1 ) | ( !W_3_1 ) )
+tell ( ( !W_1_1 ) | ( !W_3_2 ) )
+tell ( ( !W_1_1 ) | ( !W_3_3 ) )
+tell ( ( !W_1_1 ) | ( !W_3_4 ) )
+tell ( ( !W_1_1 ) | ( !W_4_1 ) )
+tell ( ( !W_1_1 ) | ( !W_4_2 ) )
+tell ( ( !W_1_1 ) | ( !W_4_3 ) )
+tell ( ( !W_1_1 ) | ( !W_4_4 ) )
+tell ( ( !W_1_2 ) | ( !W_1_3 ) )
+tell ( ( !W_1_2 ) | ( !W_1_4 ) )
+tell ( ( !W_1_2 ) | ( !W_2_2 ) )
+tell ( ( !W_1_2 ) | ( !W_2_3 ) )
+tell ( ( !W_1_2 ) | ( !W_2_4 ) )
+tell ( ( !W_1_2 ) | ( !W_3_2 ) )
+tell ( ( !W_1_2 ) | ( !W_3_3 ) )
+tell ( ( !W_1_2 ) | ( !W_3_4 ) )
+tell ( ( !W_1_2 ) | ( !W_4_2 ) )
+tell ( ( !W_1_2 ) | ( !W_4_3 ) )
+tell ( ( !W_1_2 ) | ( !W_4_4 ) )
+tell ( ( !W_1_3 ) | ( !W_1_4 ) )
+tell ( ( !W_1_3 ) | ( !W_2_3 ) )
+tell ( ( !W_1_3 ) | ( !W_2_4 ) )
+tell ( ( !W_1_3 ) | ( !W_3_3 ) )
+tell ( ( !W_1_3 ) | ( !W_3_4 ) )
+tell ( ( !W_1_3 ) | ( !W_4_3 ) )
+tell ( ( !W_1_3 ) | ( !W_4_4 ) )
+tell ( ( !W_1_4 ) | ( !W_2_4 ) )
+tell ( ( !W_1_4 ) | ( !W_3_4 ) )
+tell ( ( !W_1_4 ) | ( !W_4_4 ) )
+tell ( ( !W_2_1 ) | ( !W_1_2 ) )
+tell ( ( !W_2_1 ) | ( !W_1_3 ) )
+tell ( ( !W_2_1 ) | ( !W_1_4 ) )
+tell ( ( !W_2_1 ) | ( !W_2_2 ) )
+tell ( ( !W_2_1 ) | ( !W_2_3 ) )
+tell ( ( !W_2_1 ) | ( !W_2_4 ) )
+tell ( ( !W_2_1 ) | ( !W_3_1 ) )
+tell ( ( !W_2_1 ) | ( !W_3_2 ) )
+tell ( ( !W_2_1 ) | ( !W_3_3 ) )
+tell ( ( !W_2_1 ) | ( !W_3_4 ) )
+tell ( ( !W_2_1 ) | ( !W_4_1 ) )
+tell ( ( !W_2_1 ) | ( !W_4_2 ) )
+tell ( ( !W_2_1 ) | ( !W_4_3 ) )
+tell ( ( !W_2_1 ) | ( !W_4_4 ) )
+tell ( ( !W_2_2 ) | ( !W_1_3 ) )
+tell ( ( !W_2_2 ) | ( !W_1_4 ) )
+tell ( ( !W_2_2 ) | ( !W_2_3 ) )
+tell ( ( !W_2_2 ) | ( !W_2_4 ) )
+tell ( ( !W_2_2 ) | ( !W_3_2 ) )
+tell ( ( !W_2_2 ) | ( !W_3_3 ) )
+tell ( ( !W_2_2 ) | ( !W_3_4 ) )
+tell ( ( !W_2_2 ) | ( !W_4_2 ) )
+tell ( ( !W_2_2 ) | ( !W_4_3 ) )
+tell ( ( !W_2_2 ) | ( !W_4_4 ) )
+tell ( ( !W_2_3 ) | ( !W_1_4 ) )
+tell ( ( !W_2_3 ) | ( !W_2_4 ) )
+tell ( ( !W_2_3 ) | ( !W_3_3 ) )
+tell ( ( !W_2_3 ) | ( !W_3_4 ) )
+tell ( ( !W_2_3 ) | ( !W_4_3 ) )
+tell ( ( !W_2_3 ) | ( !W_4_4 ) )
+tell ( ( !W_2_4 ) | ( !W_3_4 ) )
+tell ( ( !W_2_4 ) | ( !W_4_4 ) )
+tell ( ( !W_3_1 ) | ( !W_1_2 ) )
+tell ( ( !W_3_1 ) | ( !W_1_3 ) )
+tell ( ( !W_3_1 ) | ( !W_1_4 ) )
+tell ( ( !W_3_1 ) | ( !W_2_2 ) )
+tell ( ( !W_3_1 ) | ( !W_2_3 ) )
+tell ( ( !W_3_1 ) | ( !W_2_4 ) )
+tell ( ( !W_3_1 ) | ( !W_3_2 ) )
+tell ( ( !W_3_1 ) | ( !W_3_3 ) )
+tell ( ( !W_3_1 ) | ( !W_3_4 ) )
+tell ( ( !W_3_1 ) | ( !W_4_1 ) )
+tell ( ( !W_3_1 ) | ( !W_4_2 ) )
+tell ( ( !W_3_1 ) | ( !W_4_3 ) )
+tell ( ( !W_3_1 ) | ( !W_4_4 ) )
+tell ( ( !W_3_2 ) | ( !W_1_3 ) )
+tell ( ( !W_3_2 ) | ( !W_1_4 ) )
+tell ( ( !W_3_2 ) | ( !W_2_3 ) )
+tell ( ( !W_3_2 ) | ( !W_2_4 ) )
+tell ( ( !W_3_2 ) | ( !W_3_3 ) )
+tell ( ( !W_3_2 ) | ( !W_3_4 ) )
+tell ( ( !W_3_2 ) | ( !W_4_2 ) )
+tell ( ( !W_3_2 ) | ( !W_4_3 ) )
+tell ( ( !W_3_2 ) | ( !W_4_4 ) )
+tell ( ( !W_3_3 ) | ( !W_1_4 ) )
+tell ( ( !W_3_3 ) | ( !W_2_4 ) )
+tell ( ( !W_3_3 ) | ( !W_3_4 ) )
+tell ( ( !W_3_3 ) | ( !W_4_3 ) )
+tell ( ( !W_3_3 ) | ( !W_4_4 ) )
+tell ( ( !W_3_4 ) | ( !W_4_4 ) )
+tell ( ( !W_4_1 ) | ( !W_1_2 ) )
+tell ( ( !W_4_1 ) | ( !W_1_3 ) )
+tell ( ( !W_4_1 ) | ( !W_1_4 ) )
+tell ( ( !W_4_1 ) | ( !W_2_2 ) )
+tell ( ( !W_4_1 ) | ( !W_2_3 ) )
+tell ( ( !W_4_1 ) | ( !W_2_4 ) )
+tell ( ( !W_4_1 ) | ( !W_3_2 ) )
+tell ( ( !W_4_1 ) | ( !W_3_3 ) )
+tell ( ( !W_4_1 ) | ( !W_3_4 ) )
+tell ( ( !W_4_1 ) | ( !W_4_2 ) )
+tell ( ( !W_4_1 ) | ( !W_4_3 ) )
+tell ( ( !W_4_1 ) | ( !W_4_4 ) )
+tell ( ( !W_4_2 ) | ( !W_1_3 ) )
+tell ( ( !W_4_2 ) | ( !W_1_4 ) )
+tell ( ( !W_4_2 ) | ( !W_2_3 ) )
+tell ( ( !W_4_2 ) | ( !W_2_4 ) )
+tell ( ( !W_4_2 ) | ( !W_3_3 ) )
+tell ( ( !W_4_2 ) | ( !W_3_4 ) )
+tell ( ( !W_4_2 ) | ( !W_4_3 ) )
+tell ( ( !W_4_2 ) | ( !W_4_4 ) )
+tell ( ( !W_4_3 ) | ( !W_1_4 ) )
+tell ( ( !W_4_3 ) | ( !W_2_4 ) )
+tell ( ( !W_4_3 ) | ( !W_3_4 ) )
+tell ( ( !W_4_3 ) | ( !W_4_4 ) )
+tell ( SAFE_1_1 <=> ( ( !P_1_1 ) & ( ( !W_1_1 ) | W_DEAD ) ) )
+tell ( SAFE_1_2 <=> ( ( !P_1_2 ) & ( ( !W_1_2 ) | W_DEAD ) ) )
+tell ( SAFE_1_3 <=> ( ( !P_1_3 ) & ( ( !W_1_3 ) | W_DEAD ) ) )
+tell ( SAFE_1_4 <=> ( ( !P_1_4 ) & ( ( !W_1_4 ) | W_DEAD ) ) )
+tell ( SAFE_2_1 <=> ( ( !P_2_1 ) & ( ( !W_2_1 ) | W_DEAD ) ) )
+tell ( SAFE_2_2 <=> ( ( !P_2_2 ) & ( ( !W_2_2 ) | W_DEAD ) ) )
+tell ( SAFE_2_3 <=> ( ( !P_2_3 ) & ( ( !W_2_3 ) | W_DEAD ) ) )
+tell ( SAFE_2_4 <=> ( ( !P_2_4 ) & ( ( !W_2_4 ) | W_DEAD ) ) )
+tell ( SAFE_3_1 <=> ( ( !P_3_1 ) & ( ( !W_3_1 ) | W_DEAD ) ) )
+tell ( SAFE_3_2 <=> ( ( !P_3_2 ) & ( ( !W_3_2 ) | W_DEAD ) ) )
+tell ( SAFE_3_3 <=> ( ( !P_3_3 ) & ( ( !W_3_3 ) | W_DEAD ) ) )
+tell ( SAFE_3_4 <=> ( ( !P_3_4 ) & ( ( !W_3_4 ) | W_DEAD ) ) )
+tell ( SAFE_4_1 <=> ( ( !P_4_1 ) & ( ( !W_4_1 ) | W_DEAD ) ) )
+tell ( SAFE_4_2 <=> ( ( !P_4_2 ) & ( ( !W_4_2 ) | W_DEAD ) ) )
+tell ( SAFE_4_3 <=> ( ( !P_4_3 ) & ( ( !W_4_3 ) | W_DEAD ) ) )
+tell ( SAFE_4_4 <=> ( ( !P_4_4 ) & ( ( !W_4_4 ) | W_DEAD ) ) )
+tell !P_1_1
+tell !W_1_1
+#
+#
+# Instance data for this problem
+#
+tell !B_1_1
+tell !S_1_1
+tell !B_1_2
+tell S_1_2
+tell B_2_1
+tell !S_2_1
+#
+# questions
+dpll SAFE_1_1
+dpll SAFE_1_2
+dpll SAFE_2_1
+dpll SAFE_2_2
+dpll SAFE_3_1
+dpll SAFE_1_3
+dpll SAFE_1_4
+dpll W_1_3
+dpll W_3_1
+dpll P_1_3
+dpll P_3_1
+dpll !SAFE_1_1
+dpll !SAFE_1_2
+dpll !SAFE_2_1
+dpll !SAFE_2_2
+dpll !SAFE_3_1
+dpll !SAFE_1_3
+dpll !SAFE_1_4
+dpll !W_1_3
+dpll !W_3_1
+dpll !P_1_3
+dpll !P_3_1

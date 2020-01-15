@@ -1,0 +1,1034 @@
+backup of jetan original attempt
+
+// #include "JetanMiniMax.h"
+// #include <ctime>
+// #include <cstdlib>
+// #include <sstream>
+
+// namespace ai
+// {
+// namespace Jetan
+// {
+// PlyData::PlyData(double utility_in)
+//     : move_ok(false),
+//       utility(utility_in)
+// {
+// }
+
+// MiniMax::MiniMax(ai::Agent::Options *opts)
+//     : max_depth(3)
+// {
+//   if (opts->GetArgInt("user1") > 0)
+//   {
+//     this->max_depth = opts->GetArgInt("user1");
+//   }
+//   {
+//     char buf[128];
+//     std::sprintf(buf, "MiniMax-%d", this->max_depth);
+//     SetName(buf);
+//   }
+
+//   std::cout << "Options:" << std::endl;
+//   std::cout << "-U num : maximum search depth (in ply)." << std::endl;
+// }
+
+// MiniMax::~MiniMax()
+// {
+// }
+
+// ai::Agent::Action *MiniMax::Program(const ai::Agent::Percept *percept)
+// {
+//   ai::Jetan::Action *action = new ai::Jetan::Action;
+
+//   std::string board_str = percept->GetAtom("BOARD").GetValue();
+//   ai::Jetan::Board board(board_str);
+
+//   int player = atoi(percept->GetAtom("PLAYER_NUMBER").GetValue().c_str());
+
+//   PlyData ply_data = this->PickMove(board, player);
+
+//   if (ply_data.move_ok)
+//   {
+//     action->SetCode(ai::Jetan::Action::MOVE);
+//     action->SetMove(ply_data.move);
+//   }
+//   else
+//   {
+//     /* no legal move, or bad choice */
+//     action->SetCode(ai::Jetan::Action::QUIT);
+//   }
+//   return action;
+// }
+
+// PlyData MiniMax::PickMove(const ai::Jetan::Board &board, int player)
+// {
+//   PlyData ply_data = this->Max(board, player, 1);
+//   return ply_data;
+// }
+
+// PlyData MiniMax::Max(const ai::Jetan::Board &board, int player, int depth)
+// {
+//   PlyData ply_data(-1.e6);
+//   if (board.HaveWinner() || depth > this->max_depth)
+//   {
+//     ply_data.utility = this->Evaluate(board, player);
+//     return ply_data;
+//   }
+
+//   ai::Jetan::Board my_board(board);
+//   const std::vector<ai::Jetan::MoveData> &moves = my_board.DetermineLegalMoves(player);
+//   int i;
+//   for (i = 0; i < (int)moves.size(); i++)
+//   {
+//     ai::Jetan::Board tmp_board(board);
+//     tmp_board.Move(player, moves[i]);
+//     PlyData tmp_ply_data = this->Min(tmp_board, player, depth + 1);
+//     if (tmp_ply_data.utility > ply_data.utility)
+//     {
+//       ply_data.utility = tmp_ply_data.utility;
+//       ply_data.move = moves[i];
+//       ply_data.move_ok = true;
+//     }
+//   }
+
+//   return ply_data;
+// }
+
+// PlyData MiniMax::Min(const ai::Jetan::Board &board, int player, int depth)
+// {
+//   PlyData ply_data(1.e6);
+//   if (board.HaveWinner() || depth > this->max_depth)
+//   {
+//     ply_data.utility = this->Evaluate(board, player);
+//     return ply_data;
+//   }
+
+//   int other_player = (player == 1) ? 2 : 1;
+//   ai::Jetan::Board my_board(board);
+//   const std::vector<ai::Jetan::MoveData> &moves = my_board.DetermineLegalMoves(other_player);
+//   int i;
+//   for (i = 0; i < (int)moves.size(); i++)
+//   {
+//     ai::Jetan::Board tmp_board(board);
+//     tmp_board.Move(other_player, moves[i]);
+//     PlyData tmp_ply_data = this->Max(tmp_board, player, depth + 1);
+//     if (tmp_ply_data.utility < ply_data.utility)
+//     {
+//       ply_data.utility = tmp_ply_data.utility;
+//       ply_data.move = moves[i];
+//       ply_data.move_ok = true;
+//     }
+//   }
+
+//   return ply_data;
+// }
+
+// double MiniMax::Evaluate(const ai::Jetan::Board &board, int player)
+// {
+//   int winner = board.HaveWinner();
+//   int other_player = (player == 1) ? 2 : 1;
+//   if (winner == 3)
+//   { /* tie games are worth 0 */
+//     return 0.0;
+//   }
+//   else if (winner == player)
+//   { /* wins are worth 1 */
+//     return 1.0;
+//   }
+//   else if (winner == other_player)
+//   { /* wins are worth -1 */
+//     return -1.0;
+//   }
+//   else
+//   {
+//     // estimate board's value
+//     const ai::Jetan::BoardData &bd = board.GetBoard();
+//     int y;
+//     double mTotal = 0;
+//     double yTotal = 0;
+//     for (y = 0; y < 40; y++) // for all pieces
+//     {
+//       Piece p = bd.pieces[y];
+//       if (p.mAlive)
+//       {                // if it's alive
+//         if (y <= 20)
+//         {              // if first player's
+//           mTotal += 1; // add it's value to the first player's total
+//         }
+//         else 
+//         {              // otherwise
+//           yTotal += 1; // add it's value to the other player's total
+//         }
+//       }
+//     }
+//     return mTotal / 20 - yTotal / 20;
+//   }
+// }
+
+// } // namespace Jetan
+// } // namespace ai
+
+h file:
+
+// #ifn def _JETAN MINIMAX_H_
+// #define _JETANMINIMAX_H_
+// #include <ai_Jetan.h>
+// namespace ai
+// {
+// namespace Jetan
+// {
+// class PlyData
+// {
+// public:
+//   PlyData(double utility_in);
+//   bool move_ok;
+//   ai::Jetan::MoveData move;
+//   double utility;
+// };
+
+// class MiniMax : public ai::Agent::AgentProgram
+// {
+// public:
+//   MiniMax(ai::Agent::Options *opts);
+//   ~MiniMax();
+//   virtual ai::Agent::Action *Program(const ai::Agent::Percept *percept);
+
+// protected:
+//   PlyData PickMove(const ai::Jetan::Board &board, int player);
+//   PlyData Max(const ai::Jetan::Board &board, int player, int depth);
+//   PlyData Min(const ai::Jetan::Board &board, int player, int depth);
+
+//   double Evaluate(const ai::Jetan::Board &board, int player);
+
+// private:
+//   int max_depth;
+
+// };
+// } // namespace Sample
+// } // namespace ai
+// #endif /* _AISAMPLEMiniMax_H_ */
+// /* Local Variables: */
+// /* mode:c++         */
+// /* End:             */
+
+
+minimax evaluation:
+#ifn def _MINIMAX EVALUATION_H_
+#define _MINIMAXEVALUATION_H_
+#include <ai_mancala.h>
+#include "JetanMinimax.h"
+namespace ai
+{
+namespace Jetan
+{
+enum
+{
+  T_SCORE_ME = 1,
+  T_SCORE_OTHER = 2,
+  T_SCORE_DIFF = 3,
+  T_H_1,
+  T_H_2,
+  T_H_3,
+  T_H_4,
+  T_H_5,
+  T_H_6,
+  T_H_COMBO_1,
+  T_H_COMBO_2,
+  T_H_COMBO_3,
+};
+
+class MinimaxEvaluation : public ai::Agent::AgentProgram
+{
+public:
+  MinimaxEvaluation(ai::Agent::Options *opts);
+  ~MinimaxEvaluation();
+  virtual ai::Agent::Action *Program(const ai::Agent::Percept *percept);
+
+protected:
+  PlyData PickMove(const ai::Jetan::Board &board, int player);
+  PlyData Max(const ai::Jetan::Board &board, int player, int depth);
+  PlyData Min(const ai::Jetan::Board &board, int player, int depth);
+
+  double Evaluate(const ai::Jetan::Board &board, int player);
+
+private:
+  double EvaluateScoreMe(const ai::Jetan::Board &board, int player);
+  double EvaluateScoreOther(const ai::Jetan::Board &board, int player);
+  double EvaluateScoreDiff(const ai::Jetan::Board &board, int player);
+
+  double hCloseToWinningMe(const ai::Jetan::Board &board, int player);
+  double hCloseToWinningOther(const ai::Jetan::Board &board, int player);
+  double hCloseToPrincess(const ai::Jetan::Board &board, int player);
+  double hFarFromMyPrincess(const ai::Jetan::Board &board, int player);
+  double hCloseToTheirCheiftain(const ai::Jetan::Board &board, int player);
+  double hFarFromMyCheiftain(const ai::Jetan::Board &board, int player);
+
+  ///////////////////////////
+  double costofSacarafice(const ai::Jetan::Board &board, int player);        // is the cost of the sacarafice worth the opp's peice/position?
+  double canTakeForFree(const ai::Jetan::Board &board, int player);          // is the kill a free kill? - is it a trap?
+  double advantageousPositioning(const ai::Jetan::Board &board, int player); // estimate of if I can come out on top in skirmish
+  double evenTradeBetterPosition(const ai::Jetan::Board &board, int player); // if an even trade, is the position that results better?
+  double runOrFight(const ai::Jetan::Board &board, int player);              // is it a good idea to fight or run? 
+  double dif(const ai::Jetan::Board &board, int player);
+  ///////////
+
+  // if the pieces I currently have intersect one of the opponent's peices,
+  // which one is it on both sides, how much risk to that peice is there,
+  // is the cost of losing the peice worth taking theirs?
+  // can I take it for free without compromising any of my peices?
+  // does it put me closer to end-game- lose or win?
+  // can I use a sacarafice as strategy to gain better footing?
+  // can I force them to choose a peice due to a reveal?
+  // how can I maximize these without running out of time?
+
+  int max_depth;
+  int evaluation_method;
+};
+} // namespace Jetan
+} // namespace ai
+#endif /* _AISAMPLEMINIMAXEVALUATION_H_ */
+/* Local Variables: */
+/* mode:c++         */
+/* End:             */
+
+
+h file:
+
+#ifn def _MINIMAX EVALUATION_H_
+#define _MINIMAXEVALUATION_H_
+#include <ai_mancala.h>
+#include "JetanMinimax.h"
+namespace ai
+{
+namespace Jetan
+{
+enum
+{
+  T_SCORE_ME = 1,
+  T_SCORE_OTHER = 2,
+  T_SCORE_DIFF = 3,
+  T_H_1,
+  T_H_2,
+  T_H_3,
+  T_H_4,
+  T_H_5,
+  T_H_6,
+  T_H_COMBO_1,
+  T_H_COMBO_2,
+  T_H_COMBO_3,
+};
+
+class MinimaxEvaluation : public ai::Agent::AgentProgram
+{
+public:
+  MinimaxEvaluation(ai::Agent::Options *opts);
+  ~MinimaxEvaluation();
+  virtual ai::Agent::Action *Program(const ai::Agent::Percept *percept);
+
+protected:
+  PlyData PickMove(const ai::Jetan::Board &board, int player);
+  PlyData Max(const ai::Jetan::Board &board, int player, int depth);
+  PlyData Min(const ai::Jetan::Board &board, int player, int depth);
+
+  double Evaluate(const ai::Jetan::Board &board, int player);
+
+private:
+  double EvaluateScoreMe(const ai::Jetan::Board &board, int player);
+  double EvaluateScoreOther(const ai::Jetan::Board &board, int player);
+  double EvaluateScoreDiff(const ai::Jetan::Board &board, int player);
+
+  double hCloseToWinningMe(const ai::Jetan::Board &board, int player);
+  double hCloseToWinningOther(const ai::Jetan::Board &board, int player);
+  double hCloseToPrincess(const ai::Jetan::Board &board, int player);
+  double hFarFromMyPrincess(const ai::Jetan::Board &board, int player);
+  double hCloseToTheirCheiftain(const ai::Jetan::Board &board, int player);
+  double hFarFromMyCheiftain(const ai::Jetan::Board &board, int player);
+
+  ///////////////////////////
+  double costofSacarafice(const ai::Jetan::Board &board, int player);        // is the cost of the sacarafice worth the opp's peice/position?
+  double canTakeForFree(const ai::Jetan::Board &board, int player);          // is the kill a free kill? - is it a trap?
+  double advantageousPositioning(const ai::Jetan::Board &board, int player); // estimate of if I can come out on top in skirmish
+  double evenTradeBetterPosition(const ai::Jetan::Board &board, int player); // if an even trade, is the position that results better?
+  double runOrFight(const ai::Jetan::Board &board, int player);              // is it a good idea to fight or run? 
+  double dif(const ai::Jetan::Board &board, int player);
+  ///////////
+
+  // if the pieces I currently have intersect one of the opponent's peices,
+  // which one is it on both sides, how much risk to that peice is there,
+  // is the cost of losing the peice worth taking theirs?
+  // can I take it for free without compromising any of my peices?
+  // does it put me closer to end-game- lose or win?
+  // can I use a sacarafice as strategy to gain better footing?
+  // can I force them to choose a peice due to a reveal?
+  // how can I maximize these without running out of time?
+
+  int max_depth;
+  int evaluation_method;
+};
+} // namespace Jetan
+} // namespace ai
+#endif /* _AISAMPLEMINIMAXEVALUATION_H_ */
+/* Local Variables: */
+/* mode:c++         */
+/* End:             */
+
+
+Backup of second shot
+
+// #include "JetanMinimax.h"
+// #include <ctime>
+// #include <cstdlib>
+// #include <sstream>
+
+// namespace ai
+// {
+// namespace Jetan
+// {
+// PlyData::PlyData(double utility_in)
+//     : move_ok(false),
+//       utility(utility_in)
+// {
+// }
+
+// Minimax::Minimax(ai::Agent::Options *opts)
+// {
+//   SetName("Minimax");
+// }
+
+// Minimax::~Minimax()
+// {
+// }
+
+// ai::Agent::Action *Minimax::Program(const ai::Agent::Percept *percept)
+// {
+//   ai::Jetan::Action *action = new ai::Jetan::Action;
+
+//   std::string board_str = percept->GetAtom("BOARD").GetValue();
+//   ai::Jetan::Board board(board_str);
+
+//   int player = atoi(percept->GetAtom("PLAYER_NUMBER").GetValue().c_str());
+
+//   PlyData ply_data = this->PickMove(board, player);
+
+//   if (ply_data.move_ok)
+//   {
+//     action->SetCode(ai::Jetan::Action::MOVE);
+//     action->SetMove(ply_data.move);
+//   }
+//   else
+//   {
+//     /* no legal move, or bad choice */
+//     action->SetCode(ai::Jetan::Action::QUIT);
+//   }
+//   return action;
+// }
+
+// /////////////////////////////////////////
+// PlyData Minimax::PickMove(const ai::Jetan::Board &board, int player)
+// {
+//   PlyData ply_data = this->Max(board, player, 1);
+//   return ply_data;
+// }
+
+// PlyData Minimax::Max(const ai::Jetan::Board &board, int player, int depth)
+// {
+//   PlyData ply_data(-1.e6);
+//   if (board.HaveWinner() || depth > this->max_depth)
+//   {
+//     ply_data.utility = this->Evaluate(board, player);
+//     return ply_data;
+//   }
+
+//   ai::Jetan::Board my_board(board);
+//   const std::vector<ai::Jetan::MoveData> &moves = my_board.DetermineLegalMoves(player);
+//   int i;
+//   for (i = 0; i < (int)moves.size(); i++)
+//   {
+//     ai::Jetan::Board tmp_board(board);
+//     tmp_board.Move(player, moves[i]);
+//     PlyData tmp_ply_data = this->Min(tmp_board, player, depth + 1);
+//     if (tmp_ply_data.utility > ply_data.utility)
+//     {
+//       ply_data.utility = tmp_ply_data.utility;
+//       ply_data.move = moves[i];
+//       ply_data.move_ok = true;
+//     }
+//   }
+
+//   return ply_data;
+// }
+
+// PlyData Minimax::Min(const ai::Jetan::Board &board, int player, int depth)
+// {
+//   PlyData ply_data(1.e6);
+//   if (board.HaveWinner() || depth > this->max_depth)
+//   {
+//     ply_data.utility = this->Evaluate(board, player);
+//     return ply_data;
+//   }
+
+//   int other_player = (player == 1) ? 2 : 1;
+//   ai::Jetan::Board my_board(board);
+//   const std::vector<ai::Jetan::MoveData> &moves = my_board.DetermineLegalMoves(other_player);
+//   int i;
+//   for (i = 0; i < (int)moves.size(); i++)
+//   {
+//     ai::Jetan::Board tmp_board(board);
+//     tmp_board.Move(other_player, moves[i]);
+//     PlyData tmp_ply_data = this->Max(tmp_board, player, depth + 1);
+//     if (tmp_ply_data.utility < ply_data.utility)
+//     {
+//       ply_data.utility = tmp_ply_data.utility;
+//       ply_data.move = moves[i];
+//       ply_data.move_ok = true;
+//     }
+//   }
+
+//   return ply_data;
+// }
+
+// /*
+//      * Simple Evaluation, my score - opponent's score
+//      */
+// double Minimax::Evaluate(const ai::Jetan::Board &board, int player)
+// {
+
+//   // estimate board's value ////////////////////////
+//   const ai::Jetan::BoardData &bd = board.GetBoard();
+//   int y;
+//   double mTotal = 0;
+//   double yTotal = 0;
+//   for (y = 0; y < 40; y++) // for all pieces
+//   {
+//     Piece p = bd.pieces[y];
+//     if (p.mAlive)
+//     { // if it's alive
+//       if (y <= 20)
+//       {              // if first player's
+//         mTotal += 1; // add it's value to the first player's total
+//       }
+//       else
+//       {              // otherwise
+//         yTotal += 1; // add it's value to the other player's total
+//       }
+//     }
+//   }
+//   return mTotal / 20 - yTotal / 20;
+// }
+// ////////////////////////////////////////
+// } // namespace Jetan
+// } // namespace ai
+
+
+
+h file:
+
+// #ifndef _JETANMINIMAXEVALUATION_H_
+// #define _JETANMINIMAXEVALUATION_H_
+
+// #include <ai_jetan.h>
+// #include "JetanMinimax.h"
+// namespace ai
+// {
+//   namespace Jetan
+//   {
+//     enum
+//     {
+//       T_SCORE_ME = 1,
+//       T_SCORE_OTHER = 2,
+//       T_SCORE_DIFF = 3,
+//       T_H_1,
+//       T_H_2,
+//       T_H_3,
+//       T_H_4,
+//       T_H_5,
+//       T_H_6,
+//       T_H_COMBO_1,
+//       T_H_COMBO_2,
+//       T_H_COMBO_3,
+//     };
+    
+//     class MinimaxEvaluation : public ai::Agent::AgentProgram
+//     {
+//     public:
+//       MinimaxEvaluation(ai::Agent::Options *opts);
+//       ~MinimaxEvaluation();
+//       virtual ai::Agent::Action * Program(const ai::Agent::Percept * percept);
+//     protected:
+//       PlyData MinimaxEvaluation::PickMove(const ai::Jetan::Board &board, int player);
+//       PlyData Max(const ai::Jetan::Board &board, int player, int depth);
+//       PlyData Min(const ai::Jetan::Board &board, int player, int depth);
+
+//       double Evaluate(const ai::Jetan::Board &board, int player);
+//     private:
+//       double EvaluateScoreMe(const ai::Jetan::Board &board, int player);
+//       double EvaluateScoreOther(const ai::Jetan::Board &board, int player);
+//       double EvaluateScoreDiff(const ai::Jetan::Board &board, int player);
+
+//       double hCloseToWinningMe(const ai::Jetan::Board &board, int player);
+//       double hCloseToWinningOther(const ai::Jetan::Board &board, int player);
+//       double hCloseToPrincess(const ai::Jetan::Board &board, int player);
+//       double hFarFromMyPrincess(const ai::Jetan::Board &board, int player);
+//       double hCloseToTheirCheiftain(const ai::Jetan::Board &board, int player);
+//       double hFarFromMyCheiftain(const ai::Jetan::Board &board, int player);
+
+//       ///////////////////////////
+//       double costofSacarafice(const ai::Jetan::Board &board, int player);        // is the cost of the sacarafice worth the opp's peice/position?
+//       double canTakeForFree(const ai::Jetan::Board &board, int player);          // is the kill a free kill? - is it a trap?
+//       double advantageousPositioning(const ai::Jetan::Board &board, int player); // estimate of if I can come out on top in skirmish
+//       double evenTradeBetterPosition(const ai::Jetan::Board &board, int player); // if an even trade, is the position that results better?
+//       double runOrFight(const ai::Jetan::Board &board, int player);              // is it a good idea to fight or run? 
+      
+//       int max_depth;
+//       int evaluation_method;
+//     };
+//   }
+// }
+// #endif /* _JETANMINIMAXEVALUATION_H_ */
+// /* Local Variables: */
+// /* mode:c++         */
+// /* End:             */
+
+
+
+MOST RECENT::::
+
+// /**
+//  * @ Author: Curtis Larsen
+//  * @ Create Time: 2019-10-10 12:41:26
+//  * @ Modified by: Kacy Stocks
+//  * @ Modified time: 2019-10-15 17:18:27
+//  * @ Description: First Implementation of AlphaBeta
+// :
+//  */
+
+#include "JetanAlphaBeta.h"
+#include <cstdio>
+
+namespace ai
+{
+namespace Jetan
+{
+const double MY_INFINITY = 1.e10;
+
+PlyData::PlyData(double utility_in)
+    : move_ok(false),
+      utility(utility_in)
+{
+}
+
+AlphaBeta::AlphaBeta(ai::Agent::Options *opts)
+    : max_depth(3){                   // always choose odd
+    SetName("AlphaBeta");
+    // if (opts->GetArgInt("user1") > 0)
+        // {
+        //     this->max_depth = opts->GetArgInt("user1");
+        // }
+        // if (opts->GetArgInt("user2") > 0)
+        // {
+        //     this->evaluation_method = opts->GetArgInt("user2");
+        // }
+        // {
+        //     char buf[128];
+        //     std::sprintf(buf, "AlphaBeta-%d-%d", this->max_depth, this->evaluation_method);
+        //     SetName(buf);
+        // }
+
+        // std::cout << "Options:" << std::endl;
+        // std::cout << "-U num : maximum search depth (in ply)." << std::endl;
+        // std::cout << "-V num : evaluation method." << std::endl;
+        // std::cout << "       : my score    : " << T_SCORE_ME << std::endl;
+        // std::cout << "       : other score : " << T_SCORE_OTHER << std::endl;
+        // std::cout << "       : diff score  : " << T_SCORE_DIFF << std::endl;
+        // std::cout << "       : h1   : " << T_H_1 << std::endl;
+        // std::cout << "       : h2   : " << T_H_2 << std::endl;
+        // std::cout << "       : h3   : " << T_H_3 << std::endl;
+        // std::cout << "       : h4   : " << T_H_4 << std::endl;
+        // std::cout << "       : h5   : " << T_H_5 << std::endl;
+        // std::cout << "       : h6   : " << T_H_6 << std::endl;
+        // std::cout << "       : hcombo1 : " << T_H_COMBO_1 << std::endl;
+        // std::cout << "       : hcombo2 : " << T_H_COMBO_2 << std::endl;
+        // std::cout << "       : hcombo3 : " << T_H_COMBO_3 << std::endl;
+}
+
+AlphaBeta::~AlphaBeta()
+{
+}
+
+ai::Agent::Action *AlphaBeta::Program(const ai::Agent::Percept *percept)
+{
+    
+    ai::Jetan::Action *action = new ai::Jetan::Action;
+
+    std::string board_str = percept->GetAtom("BOARD").GetValue();
+    ai::Jetan::Board board(board_str);
+
+    int player = atoi(percept->GetAtom("PLAYER_NUMBER").GetValue().c_str());
+    std::cout << "made it this far..." << std::endl;
+
+    PlyData ply_data = this->PickMove(board, player);
+    std::cout << "never made it this far recently..." << std::endl;
+
+    if (ply_data.move_ok)
+    {
+        action->SetCode(ai::Jetan::Action::MOVE);
+        action->SetMove(ply_data.move);
+    }
+    else
+    {
+        /* no legal move, or bad choice */
+        action->SetCode(ai::Jetan::Action::QUIT);
+    }
+
+    return action;
+}
+
+PlyData AlphaBeta::PickMove(const ai::Jetan::Board &board, int player)
+{
+    PlyData ply_data = this->Max(board, player, 1, -MY_INFINITY, MY_INFINITY);
+    std::cout << "Pick move..." << std::endl;
+    return ply_data;
+}
+
+PlyData AlphaBeta::Max(const ai::Jetan::Board &board, int player, int depth, double alpha, double beta)
+{
+    PlyData ply_data(-MY_INFINITY);
+    std::cout << "before Board.havewinner if statement in max..." << std::endl;
+
+    if (board.HaveWinner() || depth > this->max_depth)
+    {
+        std::cout << "inside of Board.havewinner if statement in max..." << std::endl;
+
+        ply_data.utility = this->Evaluate(board, player);
+        return ply_data;
+    }
+
+    ai::Jetan::Board my_board(board);
+    const std::vector<ai::Jetan::MoveData> &moves = my_board.DetermineLegalMoves(player);
+    int i;
+    std::cout << "Before moves for-loop..." << std::endl;
+    for (i = 0; i < (int)moves.size(); i++)
+    {
+        ai::Jetan::Board tmp_board(board);
+        tmp_board.Move(player, moves[i]);
+        PlyData tmp_ply_data = this->Min(tmp_board, player, depth + 1, alpha, beta);
+        if (tmp_ply_data.utility > ply_data.utility)
+        {
+            ply_data.utility = tmp_ply_data.utility;
+            ply_data.move = moves[i];
+            ply_data.move_ok = true;
+            if (ply_data.utility >= beta)
+            { /* parent node has a better (or equal) child, so this node will not be chosen */
+                break;
+            }
+            if (ply_data.utility > alpha)
+            {
+                alpha = ply_data.utility;
+            }
+        }
+    }
+    return ply_data;
+}
+
+PlyData AlphaBeta::Min(const ai::Jetan::Board &board, int player, int depth, double alpha, double beta)
+{
+    PlyData ply_data(MY_INFINITY);
+    if (board.HaveWinner() || depth > this->max_depth)
+    {
+        ply_data.utility = this->Evaluate(board, player);
+        return ply_data;
+    }
+
+    int other_player = (player == 1) ? 2 : 1;
+    ai::Jetan::Board my_board(board);
+    const std::vector<ai::Jetan::MoveData> &moves = my_board.DetermineLegalMoves(other_player);
+    int i;
+    for (i = 0; i < (int)moves.size(); i++)
+    {
+        ai::Jetan::Board tmp_board(board);
+        tmp_board.Move(other_player, moves[i]);
+        PlyData tmp_ply_data = this->Max(tmp_board, player, depth + 1, alpha, beta);
+        if (tmp_ply_data.utility < ply_data.utility)
+        {
+            ply_data.utility = tmp_ply_data.utility;
+            ply_data.move = moves[i];
+            ply_data.move_ok = true;
+            if (ply_data.utility <= alpha)
+            { /* parent node has a better (or equal) child, so this node will not be chosen */
+                break;
+            }
+            if (ply_data.utility < beta)
+            {
+                beta = ply_data.utility;
+            }
+        }
+    }
+    return ply_data;
+}
+
+/*
+     * Choose evaluation method
+     */
+double AlphaBeta::Evaluate(const ai::Jetan::Board &board, int player)
+{
+    double v = 0.0;
+    switch (this->evaluation_method)
+    {
+    case T_SCORE_ME:
+        v = this->EvaluateScoreMe(board, player);
+        break;
+    case T_SCORE_OTHER:
+        v = this->EvaluateScoreOther(board, player);
+        break;
+    default:
+        std::cout << "Before Evaluation: " << v << std::endl;
+        v = this->EvaluateScoreDiff(board, player);
+        // // std::cout << "After Evalation: " << v << std::endl;
+        // break;
+        //   case T_H_1:
+        //     v = this->EvaluateScoreDiff(board, player) + this->hCloseToPrincess(board, player);
+        //     break;
+    // case T_H_2:
+    // v = this->evenTradeBetterPosition(board, player);
+    // break;
+    }
+    return v;
+}
+
+double AlphaBeta::EvaluateScoreOther(const ai::Jetan::Board &board, int player)
+{
+    // estimate board's value
+    double mTotal = 0;
+    BoardData bd = board.GetBoard();
+    for (size_t y = 0; y < 20; y++) // for all pieces
+    {
+        Piece p = bd.pieces[y];
+        if (p.mAlive)
+        {
+            mTotal += 1;
+        }
+    }
+    // std::cout << "E me: " << mTotal/20 << std::endl;
+
+    return mTotal / 20;
+}
+
+double AlphaBeta::EvaluateScoreMe(const ai::Jetan::Board &board, int player)
+{
+    // estimate board's value
+    double v = 0;
+    BoardData bd = board.GetBoard();
+    for (size_t y = 20; y < 40; y++) // for all pieces
+    {
+        Piece p = bd.pieces[y];
+        if (p.mAlive)
+        {
+            v += 1;
+        }
+    }
+    // std::cout << "E Other: " << mTotal/20 << std::endl;
+
+    return v / 20;
+}
+
+double AlphaBeta::EvaluateScoreDiff(const ai::Jetan::Board &board, int player)
+{
+    const BoardData& boardData = board.GetBoard();
+    double v = 0;
+    int i;
+    for (i = 0; i < 20; i++) {
+        if (boardData.pieces[i].mAlive) {
+            if (player == 1) {
+                v +=1 ;
+            } else {
+                v -= 1;
+            }
+        }
+    }
+    for (i = 20; i < 40; i++) {
+        if (boardData.pieces[i].mAlive) {
+            if (player == 2) {
+                v += 1;
+            } else {
+                v -= 1;
+            }
+        }
+    }
+    return v;
+}
+
+double AlphaBeta::hCloseToPrincess(const ai::Jetan::Board &board, int player)
+{
+    double v = 0;
+    // int other_player = (player == 1) ? 2 : 1;
+    // BoardData bd = board.GetBoard();
+    // Piece princess = bd.pieces[Piece::PRINCESS + other_player*20];
+    // double ox = princess.mLocation.x;
+    // double oy = princess.mLocation.y;
+    // for (size_t y = 0 + 20*(unsigned int)player; y < 20 + 20*(unsigned int)player; y++) // for all pieces
+    // {
+    //     Piece p = bd.pieces[y];
+    //     int px = p.mLocation.x;
+    //     int py = p.mLocation.y;
+    //     v = abs(ox - px) + abs(oy - py);
+    // }
+    // std::cout << "How close to princes: " << v/100 << std::endl;
+    return v;
+}
+
+double AlphaBeta::hFarFromMyPrincess(const ai::Jetan::Board &board, int player)
+{
+    double v = 0;
+
+    return v;
+}
+
+double AlphaBeta::hCloseToTheirCheiftain(const ai::Jetan::Board &board, int player)
+{
+    double v = 0;
+    //
+
+    return v;
+}
+
+double AlphaBeta::hFarFromMyCheiftain(const ai::Jetan::Board &board, int player)
+{
+    double v = 0;
+
+    return v;
+}
+
+double AlphaBeta::costofSacarafice(const ai::Jetan::Board &board, int player)
+{
+    double v = 0;
+
+    return v;
+} // is the cost of the sacarafice worth the opp's peice/position?
+double AlphaBeta::canTakeForFree(const ai::Jetan::Board &board, int player)
+{
+    double v = 0;
+
+    return v;
+} // is the kill a free kill? - is it a trap?
+double AlphaBeta::advantageousPositioning(const ai::Jetan::Board &board, int player)
+{
+    double v = 0;
+    // if current move puts piece under attack -1
+    // if current piece is protected +1
+
+    return v;
+} // estimate of if I can come out on top in skirmish
+double AlphaBeta::evenTradeBetterPosition(const ai::Jetan::Board &board, int player)
+{
+    double v = 0;
+    // int other_player = (player == 1) ? 2 : 1;
+    // BoardData bd = board.GetBoard();
+    // for (size_t y = 0 + 20*(unsigned int)player; y < 20 + 20*(unsigned int)player; y++)
+    // {
+    //     Piece p = bd.pieces[y];
+    //     const PiecePaths* path = p.mPaths;
+    //     const std::vector<ai::Jetan::MovePath> nupe = path->getPaths();
+    //     for (size_t z = 0 + 20*(unsigned int)other_player; z < 20 + 20*(unsigned int)other_player; z++) {
+            
+    //         Piece o_p = bd.pieces[z];
+    //         // char o_ylocation = o_p.mLocation.y;
+    //         // const PiecePaths* o_path = p.mPaths;
+    //         // const std::vector<ai::Jetan::MovePath> o_nupe = path->getPaths();
+            
+    //         for (size_t x = 0; x < nupe.size(); x++) {
+    //             if (nupe[x].steps[0].dx == o_p.mLocation.x && nupe[x].steps[0].dy == o_p.mLocation.y)
+    //             {
+    //                 v += 1;
+    //             }
+    //         }
+    //     }
+    // }
+    return v;
+} // if an even trade, is the position that results better?
+double AlphaBeta::runOrFight(const ai::Jetan::Board &board, int player)
+{
+    double v = 0;
+
+    return v;
+} // is it a good idea to fight or run?
+
+} // namespace Jetan
+} // namespace ai
+
+H FILE:::
+
+
+#ifndef _JETANALPHABETA_H_
+#define _JETANALPHABETA_H_
+
+#include <ai_jetan.h>
+// #include "JetanMinimax.h"
+namespace ai
+{
+  namespace Jetan
+  {
+    enum
+    {
+      T_SCORE_ME = 1,
+      T_SCORE_OTHER = 2,
+      T_SCORE_DIFF = 3,
+      T_H_1,
+      T_H_2,
+      T_H_3,
+      T_H_4,
+      T_H_5,
+      T_H_6,
+      T_H_COMBO_1,
+      T_H_COMBO_2,
+      T_H_COMBO_3,
+    };
+
+    class PlyData
+    {
+    public:
+      PlyData(double utility_in);
+      bool move_ok;
+      ai::Jetan::MoveData move;
+      double utility;
+    };
+    
+    class AlphaBeta : public ai::Agent::AgentProgram
+    {
+    public:
+      AlphaBeta(ai::Agent::Options *opts);
+      ~AlphaBeta();
+      virtual ai::Agent::Action * Program(const ai::Agent::Percept * percept);
+    protected:
+      PlyData PickMove(const ai::Jetan::Board &board, int player);
+      PlyData Max(const ai::Jetan::Board &board, int player, int depth, double alpha, double beta);
+      PlyData Min(const ai::Jetan::Board &board, int player, int depth, double alpha, double beta);
+
+      double Evaluate(const ai::Jetan::Board &board, int player);
+    private:
+      double EvaluateScoreMe(const ai::Jetan::Board &board, int player);
+      double EvaluateScoreOther(const ai::Jetan::Board &board, int player);
+      double EvaluateScoreDiff(const ai::Jetan::Board &board, int player);
+
+      double hCloseToWinningMe(const ai::Jetan::Board &board, int player);
+      double hCloseToWinningOther(const ai::Jetan::Board &board, int player);
+      double hCloseToPrincess(const ai::Jetan::Board &board, int player);
+      double hFarFromMyPrincess(const ai::Jetan::Board &board, int player);
+      double hCloseToTheirCheiftain(const ai::Jetan::Board &board, int player);
+      double hFarFromMyCheiftain(const ai::Jetan::Board &board, int player);
+
+      ///////////////////////////
+      double costofSacarafice(const ai::Jetan::Board &board, int player);        // is the cost of the sacarafice worth the opp's peice/position?
+      double canTakeForFree(const ai::Jetan::Board &board, int player);          // is the kill a free kill? - is it a trap?
+      double advantageousPositioning(const ai::Jetan::Board &board, int player); // estimate of if I can come out on top in skirmish
+      double evenTradeBetterPosition(const ai::Jetan::Board &board, int player); // if an even trade, is the position that results better?
+      double runOrFight(const ai::Jetan::Board &board, int player);              // is it a good idea to fight or run? 
+      
+      int max_depth;
+      int evaluation_method;
+    };
+  }
+}
+#endif /* _JETANAlphaBeta_H_ */
+/* Local Variables: */
+/* mode:c++         */
+/* End:             */
