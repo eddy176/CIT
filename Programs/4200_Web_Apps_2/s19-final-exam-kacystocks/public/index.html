@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Final</title>
+        <!-- <link rel="stylesheet" href="style.css"> -->
+    </head>
+
+    <body>
+        <div id="app">
+            <h2>{{ sightingCount }} have been reported!</h2>
+            <br>
+            <button v-on:click="newSighting">Add sighting</button>
+
+                <div v-if="showSightingForm">
+                    <input type="text" v-model="location" placeholder="Location">
+                    <input type="text" v-model="approx_height" placeholder="Approximate Height">
+                    <input type="text" v-model="body_type" placeholder="Body Type">
+                    <input type="text" v-model="group_size" placeholder="Group Size">
+                    <input type="text" v-model="skin_color" placeholder="Skin Color">
+                    <button v-on:click="addSighting()">Submit</button>
+                </div>
+                <ol>
+                    <li v-for="(sighting, index) in sightings" v-bind:class="{ odd: index % 2 == 1 }" v-on:click="selectSighting(sighting)">
+                        <strong>Location:</strong>
+                        {{ sighting.location }}
+                        <div v-show="sighting.showDetails">
+                            <strong>Approximate Height:</strong>
+                            {{ sighting.approx_height }}
+                            <br>
+                            <strong>Body Type:</strong>
+                            {{ sighting.body_type }}
+                            <strong>Group Size:</strong>
+                            {{ sighting.group_size }}
+                            <strong>Skin Color:</strong>
+                            {{ sighting.skin_color }}
+                        </div>
+                    </li>
+                </ol>
+
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="app.js"></script>
+    </body>
+
+</html>

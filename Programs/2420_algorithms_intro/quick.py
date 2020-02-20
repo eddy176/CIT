@@ -15,14 +15,14 @@ def createRandomList(size):
 def quickSort(a, low, high):
     if high - low <= 0:                             # make sure high-low is greater than 0
         return                                      # if not, return
-    lM = low + 1                                    # set lM to low + 1
+    least_most_gt = low + 1                                        # set least_most_gt to low + 1
     for i in range(low, high):                      # loop from low to high in list
         if a[i] < a[low]:                           # if a at location i < a at location low
-            a[i],a[lM] = a[lM], a[i]                # swap their places
-            lM += 1                                 # lM += 1
-    pivotIndex = lM - 1                             # pivotIndex becomes lM - 1
+            a[i],a[least_most_gt] = a[least_most_gt], a[i]                # swap their places
+            least_most_gt += 1                                 # least_most_gt += 1
+    pivotIndex = least_most_gt - 1                             # pivotIndex becomes lM - 1
     a[low], a[pivotIndex] = a[pivotIndex], a[low]   # swap a at low with a at pivot index
-    print("Now it's sorted!\n" + str(a))            # print results
+    # print("Now it's sorted!\n" + str(a))            # print results
     quickSort(a, low, pivotIndex)                   # recurse once
     quickSort(a, pivotIndex + 1, high)              # recurse twice
 

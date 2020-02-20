@@ -1,0 +1,115 @@
+
+
+#container{
+    width: 100%;
+    height: 100%;
+    position: aboslute;
+    left: 0px;
+    top: 0px;
+    background-color: #666;
+}
+
+header {
+    text-align: center;
+}
+
+h1 {
+    font-size: 60;
+    font-family: Cambria;
+    font-weight: bold;
+}
+
+h3 {
+    font-family: Cambria;
+}
+
+#maindiv {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    border-color: #222;
+    border-width: 3px;
+    
+}
+
+#my-field {
+    height: 500px;
+    width: 600px;
+    justify-content: left;
+    resize: none;
+    font-family: Cambria; 
+    background-color: #222;
+    color: #999;
+    border-color: #999;
+}
+#my-json {
+    height: 500px;
+    width: 600px;
+    justify-content: right;
+    resize: none;
+    overflow: scroll;
+    font-family: Cambria; 
+    background-color: #222;
+    color: #999;
+    border-color: #999;
+}
+
+#my-json::-webkit-scrollbar{
+    height: 0px;
+}
+
+.row {
+    width: 293px;
+    resize: none;
+    background-color: #222;
+    color: #999;
+    border-color: #222;
+    justify-content: left;
+}
+
+#linkcontainer {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+#my-link {
+    font-family: Cambria;
+    display: hidden;
+    background-color: #222;
+    border-color: #222;
+    color: #999;
+}
+
+#button {
+    font-family: Cambria;
+}
+
+body{
+    margin: 0 0 0 0;
+}
+
+#button {
+    background-color: #444;
+    color: #aaa;
+    border-width: 0px;
+}
+
+#button2 {
+    background-color: #444;
+    color: #aaa;
+    border-width: 0px;
+}
+
+#full-list{
+    margin: 0 auto;
+    height: 500px;
+    width: 750px;
+    justify-content: left;
+    resize: none;
+    font-family: Cambria; 
+    background-color: #222;
+    color: #999;
+    border-color: #999;
+    visibility: none;
+}

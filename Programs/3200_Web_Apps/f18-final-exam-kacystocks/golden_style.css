@@ -1,0 +1,179 @@
+/* header stuff */
+header {
+    text-align: center;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 60;
+    font-family: 'Charmonman', cursive;
+    font-weight: bold;
+    padding: 0px;
+    margin: 0px;
+}
+/* /header stuff */
+
+/* main body */
+main { 
+    justify-content: center;
+}
+#main-wrapper {
+    height: 420px;
+    border-width: 3px;
+    border-color: #222;
+    justify-content: center;
+    text-align: center;
+    margin: 0px;
+}
+#input-wrapper {
+    margin: 5px;
+    height: 400px;
+    width: 600px;
+    font-family: Cambria; 
+    background-color: #888;
+    color: #222;
+    border-color: #222;
+    border-width: 4px;
+    float: left;
+    text-align: center;
+    margin-left: 100px;
+}
+body{
+    justify-content: center;
+}
+/* fields */
+#name {
+    background-color: #888;
+    color: #222;
+    resize: none;
+    font-family: Cambria;
+    font-weight: bold;
+    border-color: #222;
+    display: block;
+    height: 50px;
+    width: 400px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+#age { 
+    background-color: #888;
+    color: #000;
+    resize: none;
+    font-family: Cambria;
+    font-weight: bold;
+    border-color: #222;
+    display: block;
+    height: 50px;
+    width: 400px;
+    margin-top: 30px;
+    margin-left: 10px;
+}
+#guest-name {
+    background-color: #888;
+    color: #000;
+    resize: none;
+    font-family: Cambria;
+    font-weight: bold;
+    border-color: #222;
+    display: block;
+    height: 50px;
+    width: 400px;
+    margin-top: 30px;
+    margin-left: 10px; 
+}
+/* /fields */
+
+/* button */
+#button-wrapper {
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
+}
+#get-button {
+    background-color: #444;
+    font-family: Cambria;
+    color: #aaa;
+    border-width: 0px;
+    margin: 15px;
+    padding: 10 30 10 30;
+}
+/* /button */
+
+#list-wrapper{
+    margin: 5px;
+    height: 400px;
+    width: 600px;
+    font-family: Cambria; 
+    background-color: #888;
+    color: #222;
+    border-color: #222;
+    border-width: 4px;
+    float: right;    
+    text-align: center;
+    margin-right: 100px;
+    overflow: scroll;
+}
+/* /main body */
+
+/* generated in full list */
+#name-gen{
+    display: none;
+    font-size: 24;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-left: 200px;
+}
+
+#age-gen{
+    display: none;
+    font-size: 24;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-left: 200px;
+}
+
+#guest-name-gen{
+    display: none;
+    font-size: 24;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-left: 200px;
+}
+
+#ticket-id-gen{
+    display: none;
+    font-size: 24;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+    margin-left: 200px;
+}
+
+#name-label-gen{
+    font-size: 24;
+    display: none;
+}
+
+#age-label-gen{
+    font-size: 24;
+    display: none;
+}
+
+#guest-name-label-gen{
+    display: none;
+    font-size: 24;
+}
+
+#ticket-label-gen{
+    display: none;
+    font-size: 24;
+}
+/* /generated in full list */
+
+/* .row {
+    width: 293px;
+    resize: none;
+    background-color: #222;
+    color: #999;
+    border-color: #222;
+    justify-content: left;
+} */

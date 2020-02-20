@@ -1,0 +1,170 @@
+/* Game of Life StyleSheet */
+
+body {
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #3f3fb2;
+    color: white;
+}
+
+#app {
+    margin: 2px;
+    width: 100%;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #F64C72;
+    padding: 4px;
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Allan';
+    color: #F64C72;
+    background-color: #3f3fb2;
+    font-size: 6em;
+    text-shadow: .1em .1em rgba(0, 0, 0, 0.534);
+    margin: 0px;
+}
+
+#navmain {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 100%;
+}
+
+
+#buttoncontainer {
+    flex: 7 1 auto;
+    margin: 0 auto;
+    padding-top: 19px;
+    align-content: center;
+}
+
+#buttoncontainer>button {
+    color: white;
+    background-color: #3f3fb2;
+    font-family: 'Allan';
+    font-size: 1.2em;
+    border: solid;
+    border-color: #F64C72;
+    padding: 8px;
+    margin-bottom: 15px;
+}
+
+button {
+    color: white;
+    background-color: #3f3fb2;
+    border-color: #F64C72;
+}
+
+#welcome {
+    font-family: 'Allan';
+    display: inline-block;
+    flex: 4 1 auto; 
+    font-size: 1.1em;
+}
+
+#positive {
+    color: green;
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+#total {
+    color: #F64C72;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.regFields {
+    align-content: center;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+.errors {
+    color: #F64C72;
+    list-style: none;
+}
+
+.errors>ul{
+    list-style: none;
+}
+
+.regFields > input {
+    width: 30%;
+    padding: 10px;
+    margin: 20px;
+}
+
+.logInClass {
+    align-content: center;
+    padding: 10px;
+    margin-top: 20px;
+    font-size: 2em;
+}
+.logInClass > input {
+    width: 30%;
+    padding: 10px;
+    margin: 20px;
+}
+
+.logInClass > button {
+    align-content: center;
+    padding: 10px;
+    margin: 20px;
+    border: solid;
+    border-color: #F64C72;
+    font-size: .6em;
+}
+
+.mainwrapper {
+    width: 100%;
+    min-height: 500px;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    flex-wrap: nowrap;
+}
+
+.mainDoc {
+    border-style: solid;
+    border-width: 2px;
+    border-color: #F64C72;
+    font-family: 'Times NewRoman';
+    flex: 5;
+    /* display: flex; */
+    align-content: center;
+    margin-bottom: 10px;
+}
+
+.sideContainer {
+    flex: 2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 10px;
+}
+
+.dailyPepCon {
+    order: 0;
+    flex: 3 1 auto;
+    margin: auto;
+}
+
+.reminderCon {
+    order: 1;
+    flex: 3 1 auto;
+    margin: auto;
+}
+
+.goal {
+    order: 2;
+    flex: 1 1 auto;
+    margin: auto;
+}

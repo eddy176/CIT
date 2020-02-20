@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <title> Hello, Vue.</title>
+            <link rel="stylesheet" href="style.css">
+            </head>
+            <body>
+                <div id ="app">
+                    <h1>Meal Recorder</h1>
+                    <div>             
+                        <button v-on:click='newMeal'>Add your Recent Meal</button>
+                    </div>
+                        <div v-if="showMealForm">
+                            <input type='text' v-model='meat' placeholder ='Meat'>
+                            <input type='text' v-model='veggie' placeholder ='Vegetable'>
+                            <input type='text' v-model='side' placeholder = 'Side'>
+                            <button v-on:click='addMeal'>Submit</button>
+                        </div>
+                        <ol>
+                            <li v-for="(meal, index) in meals" v-bind:class="{ odd: index % 2 == 1 }"> 
+                                <strong>Meat: </strong>
+                                {{ meal.meat }}
+                                <br>
+                                <strong>Veggie: </strong>
+                                {{ meal.veggie }}
+                                <br>
+                                <strong>Side:</strong>
+                                {{ meal.side }}
+                                <br>
+                            </li>
+                        </ol>
+                    </div>
+                    <div id='imagewrapper'>
+                        <div id ='burgerimage'>
+                            <img id='ketoburger' src="foodImages/stackedBurger.jpg">
+                        </div>
+                        <div id ='cbimage'>
+                            <img id='cloudBread2' src="foodImages/cloudBreadMacro.jpg">
+                        </div>
+                        <div id='eggimage'>
+                            <img id='salamiEgg' src="foodImages/salamiEgg.jpg">
+                        </div>
+                    </div>
+                    <script src="vue.js"></script>
+                    <script src="app.js"></script>
+            </body>
+    </html>

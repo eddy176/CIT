@@ -3,11 +3,9 @@ class Player:
 
     def __init__(self, name):
         self.mName = name
-        letters = []
-        self.mLetters = letters
+        self.mLetters = []
         for i in range(7):
             self.drawLetter()
-        return
 
     def getName(self):
         return self.mName
@@ -28,11 +26,10 @@ class Player:
         return hand.strip()
 
     def checkWord(self,word):
-        newl = ''
         userletters = self.mLetters[:]
         for char in word:
             if char in list(userletters):
-                newl = userletters.pop(userletters.index(char))
+                userletters.pop(userletters.index(char))
             else:
                 return False
         self.mLetters = userletters[:]

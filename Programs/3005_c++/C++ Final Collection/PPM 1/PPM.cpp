@@ -5,7 +5,10 @@ PPM::PPM(){
     }
 
 PPM::PPM(const PPM& ppm_copy){
-    mWidth = ppm_copy.getWidth(); mHeight = ppm_copy.getHeight(); mMaxColor = ppm_copy.mMaxColor; mPicture = ppm_copy.mPicture;
+    mWidth = ppm_copy.getWidth(); 
+    mHeight = ppm_copy.getHeight(); 
+    mMaxColor = ppm_copy.mMaxColor; 
+    mPicture = ppm_copy.mPicture;
 }
 
 int PPM::getWidth( ) const {

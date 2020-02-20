@@ -1,0 +1,62 @@
+body {
+    font-family: sans-serif;
+    background-color: #ff9100;
+}
+
+#app {
+    margin-left: 60px;
+    width: 45%;
+    float: left;
+}
+h1 {
+    font-family: cambria;
+    color: #ff0000;
+    font-size: xx-large;
+}
+.alert {
+    color: #cc0000;
+}
+li {
+    text-align: right;
+    width: 45%;
+}
+li.odd {
+    background-color: #ccc;
+}
+
+#showMealForm {
+    display: inline;
+}
+
+#imagewrapper {
+    float: right;
+    margin-right: 30px;
+    margin-top: 30px;
+}
+
+
+#burgerimage {
+    width: 45%;
+}
+
+#ketoburger {
+    width: 450px;
+    height: auto;
+}
+
+#cbimage {
+    width: 45%;
+}
+
+#cloudBread2 {
+    width: 450px;
+    height: auto;
+}
+
+#eggimage {
+    width: 45%;
+}
+#salamiEgg {
+    width: 450px;
+    height: auto;
+}

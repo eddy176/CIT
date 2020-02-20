@@ -1,0 +1,212 @@
+<!-- Game of Life index file -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title> Game of Life</title>
+    <link rel="stylesheet" href="style.css">
+    <link href='https://fonts.googleapis.com/css?family=Allan' rel='stylesheet'>
+</head>
+
+<body>
+    <div id="app">
+
+
+        <!-- check to see if logged in, if not: -->
+        <div class="logInClass" id="loginFields" v-if="!loggedIn">
+            <div class="errors" v-if="errors.length > 0">
+                There was a problem saving this item:
+                <ul>
+                    <li v-for="error in errors">
+                        {{ error }}
+                    </li>
+                </ul>
+            </div>
+            <div class="regFields" v-if="clickedRegister">
+                First name:
+                <input v-model="regFields.firstName" type="text" placeholder="John">
+                <br>
+                Last name:
+                <input v-model="regFields.lastName" type="text" placeholder="Doe">
+                <br>
+            </div>
+            Email:
+            <input v-model="email" type="text" placeholder="john@johnson.com">
+            <br>
+            Password:
+            <input :type="passwordFieldType" v-model="plainPassword">
+            <br>
+            <button type="password" @click="switchVisibility">Show/Hide</button>
+            <!-- logUser needs to be implemented -->
+            <br>
+            <button v-on:click="logUser()">log in</button>
+            <button v-if="!clickedRegister" v-on:click="switchToRegister()">Register</button>
+            <button v-if="clickedRegister" v-on:click="registerUser()">Register</button>
+
+        </div>
+
+
+        <!-- createUser in app.js -->
+
+
+
+
+        <div class="loggedinWrapper" v-if="loggedIn">
+            <div id='titleORQuote'>
+                <h1>Game of Life</h1>
+            </div>
+            <div id="navmain">
+                <div id="buttoncontainer">
+                    <button v-on:click='showPositive'>Add Points Earned</button>
+                </div>
+                <div id="buttoncontainer">
+                    <button v-on:click='showNegative'>Add Points Spent</button>
+                </div>
+                <div id="buttoncontainer">
+                    <button v-on:click='openJournal'>Journal</button>
+                </div>
+                <div id="welcome">
+                    <h3>Welcome!</h3>
+                </div>
+            </div> <!-- end of navmain div -->
+            <div class="mainwrapper">
+
+                <div class="mainDoc" v-if="isMainDoc">
+    
+                    <div id="journalFields" v-if="beginJournal">
+
+                            <div class="errors" v-if="errors.length > 0">
+                                    There was a problem saving this item:
+                                    <ul>
+                                        <li v-for="error in errors">
+                                            {{ error }}
+                                        </li>
+                                    </ul>
+                                </div>
+
+                        <input id="journalTitle" v-model="journalFields.title" type="text" placeholder="Today's Entry">
+                        <textarea id="journalEntry" v-model="journalFields.entry" type="text"
+                            placeholder="Today was a good day!"></textarea>
+                        <button v-on:click="addJournal">Save</button>
+                    </div>
+                    <div v-if="showJournals">
+                        <div v-for="(journal, index) in this.journals" v-bind:class="{odd: index % 2 == 1 }"
+                            v-on:click="selectJournal(journal)">
+                            {{journal.title}}
+                            <strong>:</strong>
+                            <div v-show="journal.showDetails">
+                                {{journal.entry}}
+                                <button v-on:click.stop="removeJournal(journal)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="posFields" v-if="addNewPositive">
+                        <div class="errors" v-if="errors.length > 0">
+                                There was a problem saving this item:
+                                <ul>
+                                    <li v-for="error in errors">
+                                        {{ error }}
+                                    </li>
+                                </ul>
+                            </div>
+                        <input v-model="posFields.title" type="text" placeholder="Positive title">
+                        <input v-model="posFields.description" type="text" placeholder="Positive description">
+                        <input v-model="posFields.total" type="text" placeholder="Ammount (#)">
+                        <button v-on:click="addPositive()">Add</button>
+                    </div>
+                    <div v-if="positiveDiv">
+                        <div v-for="(positive, index) in this.positives" v-bind:class="{ odd: index % 2 == 1 }"
+                            v-on:click="selectPositive(positive)">
+                            {{ positive.title }}
+                            <strong>: </strong>
+                            <strong>Total : </strong>
+                            {{ positive.total }}
+                            <div v-show="positive.showDetails">
+                                {{ positive.description }}
+                                <button v-on:click.stop="removePositive(positive)">Delete</button>
+                                <button v-on:click.stop="changePositive()">Change</button>
+
+                                <div id="updatePosFields" v-if="positiveChange">
+                                    <input v-on:click.stop v-model="updatePosFields.title" type="text">
+                                    <input v-on:click.stop v-model="updatePosFields.description" type="text">
+                                    <input v-on:click.stop v-model="updatePosFields.total" type="text">
+                                    <button v-on:click.stop="putPositive(positive)">Update</button>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="negFields" v-if="addNewNegative">
+                        <div class="errors" v-if="errors.length > 0">
+                                There was a problem saving this item:
+                                <ul>
+                                    <li v-for="error in errors">
+                                        {{ error }}
+                                    </li>
+                                </ul>
+                            </div>
+                        <input v-model="negFields.title" type="text" placeholder="Negative title">
+                        <input v-model="negFields.description" type="text" placeholder="Negative description">
+                        <input v-model="negFields.total" type="text" placeholder="Ammount (#)">
+                        <button v-on:click="addNegative()">Add</button>
+                    </div>
+                    <div v-if="negativeDiv">
+                        <div v-for="(negative, index) in negatives" v-bind:class="{ odd: index % 2 == 1 }"
+                            v-on:click="selectNegative(negative)">
+                            {{ negative.title }}
+                            <strong>: </strong>
+                            <strong>Total : </strong>
+                            {{ negative.total }}
+                            <div v-show="negative.showDetails">
+                                {{ negative.description }}
+                                <button v-on:click.stop="removeNegative(negative)">Delete</button>
+                                <button v-on:click.stop="changeNegative()">Change</button>
+                                <div id="updateNegFields" v-if="negativeChange">
+                                    <input v-on:click.stop v-model="updateNegFields.title" type="text">
+                                    <input v-on:click.stop v-model="updateNegFields.description" type="text">
+                                    <input v-on:click.stop v-model="updateNegFields.total" type="text">
+                                    <button v-on:click.stop="putNegative(negative)">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div v-if="total">
+                        <h3>Total: {{ totalOfEntries }}</h3>
+                    </div>
+                </div> <!-- end of maindoc div-->
+
+                <div class="sideContainer">
+                    <div class="dailyPepCon">
+                        <h3>You can do this, I know you can. You are strong.</h3>
+                        <br>
+                    </div>
+
+                    <div class="reminderCon">
+                        <!-- v-for="(reminder, index) in reminders"v-bind:class="{ odd: index % 2 == 1 }"> -->
+                        <h3>Don't Forget to drink water regularly throughout the day!</h3>
+                        <!-- <input type="radio" name="remRad" > -->
+                        <!-- v-on:click="remClicked(reminder)"> -->
+                        <br>
+                    </div>
+
+                    <div class="goal">
+                        <h3>My Goal: 1000</h3>
+                    </div>
+
+                </div> <!-- end of side div -->
+
+            </div> <!-- end of mainwrapper div -->
+
+        </div> <!-- end of loggedinwrapper div -->
+
+    </div> <!-- end of app div -->
+    <script src="vue.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

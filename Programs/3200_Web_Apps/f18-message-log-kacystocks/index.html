@@ -1,0 +1,30 @@
+<!-- Created by Kacy Stocks -->
+<html>
+    <head>
+        <title>MyData</title>
+        <meta name="robots" content="noindex">
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
+    </head>
+    <body>
+        <div id="container">
+            <header>
+                <h1 id="heading">Welcome to MyData!</h1>
+                <h3>This web app is used to source your larger datasets. Paste your text- based data, then click the button to generate a link.<br>Click again to get a copy of the link to your clipboard to paste into your project.</h3>
+            </header>
+            <main>
+                <div id="mainDiv">
+                    <textarea id="my-field" type='text' placeholder='Please paste your text here.'></textarea>
+                    <div id="my-json"></div>
+                    <div id="full-list"></div>
+                </div>
+                <div id="linkcontainer">
+                    <button id="button">Get Link</button>
+                    <input id="my-link" type='text'>
+                    <button id="button2">Get List</button>
+                </div>
+            </main>
+        </div>
+        <script src="main.js"></script>
+    </body>
+</html>

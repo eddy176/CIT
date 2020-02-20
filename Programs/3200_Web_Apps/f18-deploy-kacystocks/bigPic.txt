@@ -1,0 +1,69 @@
+Server Types
+
+finish this by friday!!!!!!!
+
+Procfile will tell Heroku how to open the server.py file
+
+PaaS:
+    Heroku
+    Google App Engine
+    AWS Elastic Beanstalk
+    :: differs from virtual because:
+        backed up onto a virtual server
+        pre-configured instances for your particular setup
+        very specific for your requirements
+        they handle the backend for you
+        they scale it for you
+        make sure it's secure, updated, and handle it all for you
+
+    pros:
+        easier
+        lots of control still
+        software headache is removed
+        modern godaddy
+    cons:
+        more expensive
+        may not support everything yet
+
+
+//////////////////////////////////////////////////////////////// don't need to study these
+containers:
+    real-time server instances (5 minutes) or as needed
+    efficient with time and money
+    spins up and down PaaS quickly
+
+
+both below are evolved from PaaS
+Serverless:
+    functions as a Services
+    microfunctions
+    charged only for the time that it takes your code to execute
+    industrial experimentation
+    it's uncomfortable for some devs
+    basically you write the code, we take care of it
+//////////////////////////////////////////////////////////////// don't need to study these
+
+
+(know pros and cons of these)
+Virtual Servers:
+    Linode:                                 linux virtual machines
+    Digital Ocean:      
+    EC2 (AWS):                              Amazon Web Services
+    Cloud Compute/Google Compute Engine:    High-end
+
+Physical Servers:
+    data center     :: reliable power and internet connection
+    bedroom
+    dell computer/server
+    IOT             :: internet of things
+        -Raspberry Pi
+
+Shared
+    godaddy.com
+    wordpress
+    :: limited, security is bad, cheap, easy
+
+
+
+give step 4 time
+

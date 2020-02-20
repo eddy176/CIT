@@ -1,0 +1,115 @@
+my idea:
+    game of life
+
+    create an app that takes events that some user inputs to get points
+    in life to put toward something that that user values, such as buying
+    something that the user likes, the points are basically a currency
+
+    this could be used to motivate people who have trouble being motivated 
+    due to various health issues
+
+    ?? walk the user through a tutorial how to add a resource add-on ??
+
+    resources:
+        users:
+            each user will have:
+                name
+                goals
+                    milestones (which are miniature goals to reach the big ones)
+                    ?? progress bar ??
+                score
+                reminders (which show up throughout the day in their own field)
+                quotes
+            suggested add-ons:
+                height
+                weight
+                addictions
+                bad behaviors
+                road bumps to overcome
+
+        suggested achievements: ??user can show or hide suggested achievements??
+            brushed teeth
+            made bed
+            healthy meal
+            dressed up
+            did makeup
+            did hair
+            did laundry
+            did dishes
+            worked out < 30min
+            worked out > 30min < 45 min
+            worked out > 45 min
+            healthy music
+            helped someone
+            did homework before due date
+            worked hard
+            did something extra
+            socialized 
+            slept enough
+            slept >= 8 hours
+            arrived on time
+            had a proper rest day
+            meditated
+            did chores
+            wrote in journal
+            remembered something difficult
+            passed a test
+            aced a test
+            aced an assignment
+            achieved a goal
+            cooked own meal
+            got up before alarm
+            did chores
+            sang happy / healthy songs
+            be thoughtful / thankful
+            take a nap
+            soda free day
+            unsavory comment free day
+            road rage free day
+            healthy emotional release
+            defeat dark thoughts
+            find healthy alternative to be used in the future
+            made a healthy goal
+            day without forgetting someone's name
+            reflected good memories
+            added a positive quote
+            milestone reached
+            calorie goal satisfied
+            ?? different categories for each suggested achievement ??
+            comforted other emotionally
+            recieved healthy emotional comfort
+
+            custom achievement
+
+        possible buys:          ??user can show or hide suggested buys??
+            for each buy, remind the user that in order to be better,
+            being truthful to themselves is important
+            rewards:
+                ?? different categories for each suggested buy ??
+                buy something < $10
+                buy something < $20
+                buy something < $50
+                buy something >= $50
+                watch favorite show
+                watch movie
+                choose to do something alone
+                play video games
+                have unhealthy meal
+                have desert
+                sleep in
+                custom reward
+            
+            negative actions: ?? reminder to be better for each ??
+                be lazy
+                drink unhealthy alcoholic beverage
+                something in excess
+                day off of work / school ?? reminder about how important it is ??
+                vacation from work
+                negative behavior
+                let someone else do it ?? this can be a more specific laziness subcategory ??
+
+                custom buy
+
+        positive quotes: (which show a random quote at the start of the app)
+
+            add:

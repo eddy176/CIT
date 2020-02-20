@@ -1,0 +1,28 @@
+{
+  "name": "gameoflife",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "bcrypt": "^3.0.5",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "mongoose": "^5.4.20",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "require.js": "^1.0.0",
+    "requirejs": "^2.3.6",
+    "standard": "^12.0.1",
+    "vue": "^2.6.10",
+    "websocket": "^1.0.28",
+    "ws": "^6.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
