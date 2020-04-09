@@ -86,7 +86,7 @@ StateMachineClass::StateMachineClass() {
 	// IDENTIFIER
 	mLegalMoves[IDENTIFIER_STATE][LETTER_CHAR] = IDENTIFIER_STATE;
 	mLegalMoves[IDENTIFIER_STATE][DIGIT_CHAR] = IDENTIFIER_STATE;
-	mLegalMoves[IDENTIFIER_STATE][SEMICOLON_CHAR] = CANTMOVE_STATE;
+	// mLegalMoves[IDENTIFIER_STATE][SEMICOLON_CHAR] = CANTMOVE_STATE;
 
 
 	// AND / OR
@@ -130,7 +130,7 @@ StateMachineClass::StateMachineClass() {
 	mCorrespondingTokenTypes[GREATERTHAN_STATE] = GREATER_TOKEN;
 	mCorrespondingTokenTypes[LESSEQ_STATE] = LESSEQUAL_TOKEN;
 	mCorrespondingTokenTypes[GREATEREQ_STATE] = GREATEREQUAL_TOKEN;
-	mCorrespondingTokenTypes[ASSIGNMENT_STATE] = ASSIGNMENT_TOKEN;
+	// mCorrespondingTokenTypes[ASSIGNMENT_STATE] = ASSIGNMENT_TOKEN;
 	
 	// insertionstate
 	mCorrespondingTokenTypes[INSERTION_STATE] = INSERTION_TOKEN;

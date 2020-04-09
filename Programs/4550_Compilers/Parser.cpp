@@ -231,7 +231,6 @@ ExpressionNode * ParserClass::PlusMinus() {
 		}
 	}
 	return current;
-
 }
 
 ExpressionNode * ParserClass::TimesDivide() {
@@ -318,7 +317,7 @@ AssignmentStatementNode * ParserClass::AssignmentStatement() {
 	TokenType TT = mScanner->PeekNextToken().GetTokenType();
 	
 	if (TT == PLUSEQUAL_TOKEN) {
-		 PlusequalStatement(IN);
+		PlusequalStatement(IN);
 	}
 	else if (TT == MINUSEQUAL_TOKEN) {
 		MinusequalStatement(IN);

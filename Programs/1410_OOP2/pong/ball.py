@@ -79,12 +79,7 @@ class Ball:
 
 #position of ball
     def setPosition(self, x, y):
-        minX = self.mMinX
-        minY = self.mMinY
-        maxX = self.mMaxX
-        maxY = self.mMaxY
-        size = self.mSize
-        if x >= minX and x <= maxX - size and y >= minY and y <= maxY - size:
+        if x >= self.mMinX and x <= self.mMaxX - self.mize and y >= self.mMinY and y <= self.mMaxY - self.mSize:
             self.mX = x
             self.mY = y
 # speed of ball
@@ -109,7 +104,7 @@ class Ball:
 
 # check boundary
     def checkTop(self, new_y):
-        if new_y <= self.mMinY and self.mDY < 0:
+        if new_y <= self.mMinY:
             self.mDY = -self.mDY
             new_y = self.mMinY + (self.mMinY - new_y)
         return new_y
@@ -145,7 +140,7 @@ class Ball:
     def checkRightPaddle(self, new_x, new_y):
         mid_y = (new_y + self.mY) / 2
         if mid_y >= self.mRightPaddleMinY and mid_y <= self.mRightPaddleMaxY and new_x + self.mSize \
-                >= self.mRightPaddleX and self.mX + self.mSize <= self.mRightPaddleX and self.mDX > 0:
+                >= self.mRightPaddleX and self.mX + self.mSize <= self.mRightPaddleX:
             new_x = self.mRightPaddleX - self.mSize - (new_x - (self.mRightPaddleX - self.mSize))
             self.mDX = -self.mDX
         return new_x
